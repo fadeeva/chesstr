@@ -31,14 +31,45 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 40px;
+    margin-top: 60px;
+}
+
+#game_name {
+	border-top: 1px solid var(--white);
+    margin: 0 36px 24px 36px;
+}
+
+#points {
+    display: flex;
+    justify-content: space-between;
+    
+    margin: 0 40px 6px 40px;
+}
+
+#points li {
+    border-left: 2px solid var(--white);
+    height: 16px;
+}
+
+#points .right {
+    border-left: 2px solid var(--green);
+}
+
+#points .wrong {
+    border-left: 2px solid var(--red);
 }
 
 h1 {
     font-family: "Zodiak Regular";
     font-weight: 100;
     font-size: 1.28em;
-    color: var(--white);
+    color: var(--black);
+    text-align: center;
+    padding: 4px 20px;
+    margin: 0;
+    
+    min-width: 220px;
+    background: var(--white);
 }
 
 #logo_block {
@@ -58,10 +89,6 @@ ul {
 #chess_desk {
 	width: 720px;
     height: 720px;
-    
-/*    box-sizing: border-box;*/
-    
-/*    position: relative;*/
 }
 
 #desk_numbers, #desk_letters {
@@ -91,6 +118,12 @@ ul {
     justify-content: center;
 }
 
+/*
+#desk_numbers li:nth-child(even) {
+    border-right: 8px solid var(--beige);
+}
+*/
+
 #desk_letters {
 	position: absolute;
     z-index: 2;
@@ -112,18 +145,7 @@ ul {
     justify-content: center;
 }
 
-
-
-/*
-.flexbox_ctn {
-	flex: 3;
-    text-align: center;
-}
-*/
-
-/*aside { flex: 1; }*/
-
 #squares {
-	background: #b5b5b5;
     margin: 40px 0 0 40px;
 }
+
