@@ -1,0 +1,129 @@
+@font-face {
+    font-family: "Clash Light";
+    src: url("../fonts/ClashDisplay-Light.otf");
+}
+
+@font-face {
+    font-family: "Clash Medium";
+    src: url("../fonts/ClashDisplay-Medium.otf");
+}
+
+@font-face {
+    font-family: "Zodiak Regular";
+    src: url("../fonts/Zodiak-Regular.otf");
+}
+
+:root {
+    --white: #FFFFFF;
+    --black: #0E111C;
+    --brown: #705634;
+    --beige: #D1B386;
+    --red:   #F75B37;
+    --green: #6BAB70;
+}
+
+body {
+    background: var(--black);
+    font-size: 21px;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+h1 {
+    font-family: "Zodiak Regular";
+    font-weight: 100;
+    font-size: 1.28em;
+    color: var(--white);
+}
+
+#logo_block {
+	margin-top: 120px;
+}
+
+#logo_block li {
+	margin-bottom: 80px;
+}
+
+ul { 
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#chess_desk {
+	width: 720px;
+    height: 720px;
+    
+/*    box-sizing: border-box;*/
+    
+/*    position: relative;*/
+}
+
+#desk_numbers, #desk_letters {
+    font-family: "Clash Medium";
+    font-size: 1em;
+    color: var(--beige);
+}
+
+#desk_numbers {
+	position: absolute;
+    z-index: 1;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    margin: 40px 12px;
+}
+
+#desk_numbers li {
+	height: 80px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#desk_letters {
+	position: absolute;
+    z-index: 2;
+    
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    
+    margin: 6px 40px;
+}
+
+#desk_letters li {
+	width: 80px;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+/*
+.flexbox_ctn {
+	flex: 3;
+    text-align: center;
+}
+*/
+
+/*aside { flex: 1; }*/
+
+#squares {
+	background: #b5b5b5;
+    margin: 40px 0 0 40px;
+}

@@ -1,0 +1,84 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+main, header, footer {
+    flex-direction: column;
+    display: flex;    
+}
+
+.flex_row { display: flex;  height: 100%; }
+.flex_container { display: flex;  height: 100%; }
+
+/*---- Columns ----*/
+.flex_1 { flex: 12; }
+.flex_2 { flex: 6; height: 200px; }
+.flex_3 { flex: 4; }
+.flex_4 { flex: 3; }
+.flex_6 { flex: 2; height: 200px; }
+.flex_12 { flex: 1; }
+/*-----------------*/
+
+/*---- Justify ----*/
+.center { justify-content: center; }
+.flex-end { justify-content: flex-end; }
+.flex-start { justify-content: flex-start; }
+.space-around { justify-content: space-around; }
+.space-between { justify-content: space-between; }
+/*-----------------*/
+
+/*---- Column-Align ----*/
+.column-right {
+    flex-direction: column;
+    align-items: right;
+}
+
+.column-left {
+    flex-direction: column;
+    align-items: left;
+}
+
+.column-center {   
+    align-items: center;
+    flex-direction: column;
+	justify-content: center;
+}
+/*---------------------*/
+
+/*---- Direction ----*/
+.column { flex-direction: column; }
+.row { flex-direction: row; }
+/*------------------*/
+
+/*---- Order ----*/
+.order1 { order: 1; }
+.order2 { order: 2; }
+.order3 { order: 3; }
+.order4 { order: 4; }
+.order5 { order: 5; }
+.order6 { order: 6; }
+/*---------------*/
+
+/*---- Colors ----*/
+.red { background-color: #FF5757; }
+.blue { background-color: #57EFFF; }
+.green { background-color: #6DFF57; }
+.yellow { background-color: #FFC257; }
+.grey { background-color: #3D3D3D; }
+.purple { background-color: #E799F3; }
+/*---------------*/
+
+.flex_1, .flex_2, .flex_3,
+.flex_4, .flex_6, .flex_12 { 
+    
+}
+
+
+/*---- MOBILE ----*/
+@media screen and (max-width: 1000px) {
+    .flex_row {
+        flex-direction: column;
+    }
+
+}
