@@ -36,14 +36,14 @@ main {
 
 #game_name {
 	border-top: 1px solid var(--white);
-    margin: 0 36px 24px 36px;
+    margin: 0 0 24px 30px;
 }
 
 #points {
     display: flex;
     justify-content: space-between;
     
-    margin: 0 40px 6px 40px;
+    margin: 0 8px 6px 40px;
 }
 
 #points li {
@@ -51,13 +51,8 @@ main {
     height: 16px;
 }
 
-#points .right {
-    border-left: 2px solid var(--green);
-}
-
-#points .wrong {
-    border-left: 2px solid var(--red);
-}
+#points .right { border-left: 2px solid var(--green); }
+#points .wrong { border-left: 2px solid var(--red); }
 
 h1 {
     font-family: "Zodiak Regular";
@@ -72,13 +67,9 @@ h1 {
     background: var(--white);
 }
 
-#logo_block {
-	margin-top: 120px;
-}
+#logo_block { margin-top: 120px; }
 
-#logo_block li {
-	margin-bottom: 80px;
-}
+#logo_block li { margin-bottom: 80px; }
 
 ul { 
     list-style: none;
@@ -87,8 +78,6 @@ ul {
 }
 
 #chess_desk {
-	width: 720px;
-    height: 720px;
 }
 
 #desk_numbers, #desk_letters {
@@ -106,25 +95,45 @@ ul {
     align-items: center;
     justify-content: center;
     
-    margin: 40px 12px;
+    margin: 44px 0px;
 }
 
-#desk_numbers li {
+#border_right {
+	position: relative;
+    z-index: 3;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    margin: 40px 0px;
+    top: -694px;
+    left: 350px;
+}
+
+#desk_numbers li, #border_right li {
 	height: 80px;
     
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    
+    padding-right: 18px;
 }
 
-/*
-#desk_numbers li:nth-child(even) {
-    border-right: 8px solid var(--beige);
-}
-*/
+#desk_numbers li:nth-child(even) { border-right: 8px solid var(--beige); }
+#desk_numbers li:nth-child(odd) { border-right: 8px solid var(--black); }
+#desk_numbers li:last-child { margin-right: -6px; }
+#desk_numbers li:nth-child(2) { margin-right: -1px; }
 
-#desk_letters {
+#border_right li { margin-left: -2px; }
+#border_right li:nth-child(odd) { border-left: 8px solid var(--beige); }
+#border_right li:first-child,
+#border_right li:last-child { margin-left: 52px; }
+
+#desk_letters, #border_bottom {
 	position: absolute;
     z-index: 2;
     
@@ -136,16 +145,32 @@ ul {
     margin: 6px 40px;
 }
 
-#desk_letters li {
+#desk_letters li:nth-child(even) { border-bottom: 8px solid var(--beige); }
+#desk_letters li:nth-child(odd) { border-bottom: 8px solid var(--black); }
+#desk_letters li {padding-bottom: 4px;}
+
+#border_bottom { margin-top: -14px; }
+
+#border_bottom li:nth-child(odd) { border-top: 8px solid var(--beige); }
+
+#desk_letters li, #border_bottom li {
 	width: 80px;
     
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin-bottom: 20px;
 }
 
-#squares {
-    margin: 40px 0 0 40px;
+#squares { margin: 44px 0 0 40px; }
+
+.circle {
+	width: 34px;
+    height: 34px;
+    border-radius: 16px;
+    margin-left: 20px;
 }
 
+.brown { background: var(--brown); }
+.beige { background: var(--white); }
