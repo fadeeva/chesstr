@@ -14,73 +14,145 @@ const LETTER_TO_NUMBER = {a: 1, b: 2, c: 3, d: 4, e: 5, f: 6, g: 7, h: 8 }
 
 const PIECES = { 
     white: {
-        bishop: { src: './img/pieces/bishop_w.svg', chess_notation: ['c1', 'f1'] },
-        king:   { src: './img/pieces/king_w.svg',   chess_notation: ['e1'] },
-        knight: { src: './img/pieces/knight_w.svg', chess_notation: ['b1', 'g1'] },
-        queen:  { src: './img/pieces/queen_w.svg',  chess_notation: ['d1'] },
-        rook:   { src: './img/pieces/rook_w.svg',   chess_notation: ['a1', 'h1'] },
-        pawn:   { src: './img/pieces/pawn_w.svg',   chess_notation: ['a2', 'b2', 'c2', 'd2', 'e2', 'f2', 'g2', 'h2'] }
+        bishop: { src           : './img/pieces/bishop_w.svg',
+                  startCoords   : ['c1', 'f1'],
+                  chessNotation : 'wB',
+                },
+        
+        king:   { src: './img/pieces/king_w.svg',
+                  startCoords: ['e1'],
+                  chessNotation : 'wK',
+                },
+        
+        knight: { src: './img/pieces/knight_w.svg',
+                  startCoords: ['b1', 'g1'],
+                  chessNotation : 'wN',
+                },
+        
+        queen:  { src: './img/pieces/queen_w.svg',
+                  startCoords: ['d1'],
+                  chessNotation : 'wQ',
+                },
+        
+        rook:   { src: './img/pieces/rook_w.svg',
+                  startCoords: ['a1', 'h1'],
+                  chessNotation : 'wR',
+                },
+        
+        pawn:   { src: './img/pieces/pawn_w.svg',
+                  startCoords: ['a2', 'b2', 'c2', 'd2', 'e2', 'f2', 'g2', 'h2'],
+                  chessNotation : 'w',
+                }
     },
     
     black: {
-        bishop: { src: './img/pieces/bishop_b.svg', chess_notation: ['c8', 'f8'] },
-        king:   { src: './img/pieces/king_b.svg',   chess_notation: ['e8'] },
-        knight: { src: './img/pieces/knight_b.svg', chess_notation: ['b8', 'g8'] },
-        queen:  { src: './img/pieces/queen_b.svg',  chess_notation: ['d8'] },
-        rook:   { src: './img/pieces/rook_b.svg',   chess_notation: ['a8', 'h8'] },
-        pawn:   { src: './img/pieces/pawn_b.svg',   chess_notation: ['a7', 'b7', 'c7', 'd7', 'e7', 'f7', 'g7', 'h7'] }
+        bishop: { src: './img/pieces/bishop_b.svg',
+                  startCoords: ['c8', 'f8'],
+                  chessNotation : 'bB',
+                },
+            
+        king:   { src: './img/pieces/king_b.svg',
+                  startCoords: ['e8'],
+                  chessNotation : 'bK',
+                },
+            
+        knight: { src: './img/pieces/knight_b.svg',
+                  startCoords: ['b8', 'g8'],
+                  chessNotation : 'bN',
+                },
+            
+        queen:  { src: './img/pieces/queen_b.svg',
+                  startCoords: ['d8'],
+                  chessNotation : 'bQ',
+                },
+            
+        rook:   { src: './img/pieces/rook_b.svg',
+                  startCoords: ['a8', 'h8'],
+                  chessNotation : 'bR',
+                },
+            
+        pawn:   { src: './img/pieces/pawn_b.svg',
+                  startCoords: ['a7', 'b7', 'c7', 'd7', 'e7', 'f7', 'g7', 'h7'],
+                  chessNotation : 'b',
+                }
     },
     
 }
 
-/*const COORD*/
+const OFFSET = { x: 0, y: 0 };
 
+const CURRENT_GAME = []
 /**
  * Стартовая точка игры.
  */
 function init() {
     canvas = document.getElementById("squares");
-    canvasCnt = document.getElementById("chess_desk");
-    
     ctx = canvas.getContext("2d");
     
     drawChessSquares();
     setUpPieces();
+    
+    OFFSET.x = document.getElementById('squares').offsetLeft;
+    OFFSET.y = document.getElementById('squares').offsetTop;
+    
+    canvas.addEventListener("mousedown", handleMouseDown);
+    
+    console.log(CURRENT_GAME)
 }
 
-function createPiece(src, chess_notation) {
-    let piece = new Image();
-    let coord = transformCoords(chess_notation)
-    piece.src = src
-        piece.onload = () => {
-            ctx.drawImage(piece, coord.x, coord.y);
-        };
+function handleMouseDown(event) { 
+    event = event || window.event
+    
+    whatPiece(event)
 }
+
+function whatPiece(event) {
+    let cursorX = parseInt(event.pageX - OFFSET.x)
+    let cursorY = parseInt(event.pageY - OFFSET.y)
+    
+    console.log(cartesianInChessCoords(cursorX, cursorY))
+}
+
+function createPiece(src, startCoords) {
+    let piece = new Image()
+    let coord = chessCoordsInCartesian(startCoords)
+    piece.src = src
+    piece.onload = () => { ctx.drawImage(piece, coord.x, coord.y) };
+}
+
 
 function setUpPieces() {
     let x = 0
     let y = 0
     for(let piece in PIECES.black) {
-        for(let cn of PIECES.black[piece].chess_notation) {
-            createPiece(PIECES.black[piece].src, cn)
+        for(let cn of PIECES.black[piece].startCoords) {
+            createPiece(PIECES.black[piece].src, cn);
+            CURRENT_GAME.push(PIECES.black[piece].chessNotation + '' + cn)
         }
     }
     
     x = 0
     y = 0
     for(let piece in PIECES.white) {
-        for(let cn of PIECES.white[piece].chess_notation) {
-            createPiece(PIECES.white[piece].src, cn)
+        for(let cn of PIECES.white[piece].startCoords) {
+            createPiece(PIECES.white[piece].src, cn);
+            CURRENT_GAME.push(PIECES.white[piece].chessNotation + '' + cn)
         }
     }
 }
 
-function transformCoords(chess_notation) {
-    let x = LETTER_TO_NUMBER[chess_notation[0]] - 1
-    let y = 8 - parseInt(chess_notation[1])
+function chessCoordsInCartesian(startCoords) {
+    let x = LETTER_TO_NUMBER[startCoords[0]] - 1
+    let y = 8 - parseInt(startCoords[1])
     x *= SIDE_OF_SQUARE
     y *= SIDE_OF_SQUARE
     return({x: x, y: y})
+}
+
+function cartesianInChessCoords(x, y) {
+    ltr = Object.keys(LETTER_TO_NUMBER).find(key => LETTER_TO_NUMBER[key] === parseInt(x / SIDE_OF_SQUARE + 1))
+    num = 8 - parseInt(y / SIDE_OF_SQUARE)
+    return(ltr + '' + num)
 }
 
 /**

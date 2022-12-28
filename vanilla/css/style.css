@@ -163,7 +163,12 @@ ul {
     margin-bottom: 20px;
 }
 
-#squares { margin: 44px 0 0 40px; }
+#squares {
+    position: relative;
+    z-index: 5;
+    
+    margin: 44px 0 0 40px;
+}
 
 .circle {
 	width: 34px;
