@@ -13,81 +13,65 @@ const SQUARE_COLOR = {
 const LETTER_TO_NUMBER = {a: 1, b: 2, c: 3, d: 4, e: 5, f: 6, g: 7, h: 8 }
 
 const PIECES = { 
-    white: {
-        bishop: { src           : './img/pieces/bishop_w.svg',
-                  startCoords   : ['c1', 'f1'],
-                  chessNotation : 'wB',
-                },
-        
-        king:   { src: './img/pieces/king_w.svg',
-                  startCoords: ['e1'],
-                  chessNotation : 'wK',
-                },
-        
-        knight: { src: './img/pieces/knight_w.svg',
-                  startCoords: ['b1', 'g1'],
-                  chessNotation : 'wN',
-                },
-        
-        queen:  { src: './img/pieces/queen_w.svg',
-                  startCoords: ['d1'],
-                  chessNotation : 'wQ',
-                },
-        
-        rook:   { src: './img/pieces/rook_w.svg',
-                  startCoords: ['a1', 'h1'],
-                  chessNotation : 'wR',
-                },
-        
-        pawn:   { src: './img/pieces/pawn_w.svg',
-                  startCoords: ['a2', 'b2', 'c2', 'd2', 'e2', 'f2', 'g2', 'h2'],
-                  chessNotation : 'w',
-                }
-    },
-    
-    black: {
-        bishop: { src: './img/pieces/bishop_b.svg',
-                  startCoords: ['c8', 'f8'],
-                  chessNotation : 'bB',
-                },
-            
-        king:   { src: './img/pieces/king_b.svg',
-                  startCoords: ['e8'],
-                  chessNotation : 'bK',
-                },
-            
-        knight: { src: './img/pieces/knight_b.svg',
-                  startCoords: ['b8', 'g8'],
-                  chessNotation : 'bN',
-                },
-            
-        queen:  { src: './img/pieces/queen_b.svg',
-                  startCoords: ['d8'],
-                  chessNotation : 'bQ',
-                },
-            
-        rook:   { src: './img/pieces/rook_b.svg',
-                  startCoords: ['a8', 'h8'],
-                  chessNotation : 'bR',
-                },
-            
-        pawn:   { src: './img/pieces/pawn_b.svg',
-                  startCoords: ['a7', 'b7', 'c7', 'd7', 'e7', 'f7', 'g7', 'h7'],
-                  chessNotation : 'b',
-                }
-    },
+    wB : { src         : './img/pieces/bishop_w.svg',
+           startCoords : ['c1', 'f1'],
+         },
+
+    wK : { src         : './img/pieces/king_w.svg',
+           startCoords : ['e1'],
+         },
+
+    wN : { src         : './img/pieces/knight_w.svg',
+           startCoords : ['b1', 'g1'],
+         },
+
+    wQ : { src         : './img/pieces/queen_w.svg',
+           startCoords : ['d1'],
+         },
+
+    wR : { src         : './img/pieces/rook_w.svg',
+           startCoords : ['a1', 'h1'],
+         },
+
+    w :  { src         : './img/pieces/pawn_w.svg',
+           startCoords : ['a2', 'b2', 'c2', 'd2', 'e2', 'f2', 'g2', 'h2'],
+         },
+
+    bB: { src         : './img/pieces/bishop_b.svg',
+          startCoords : ['c8', 'f8'],
+        },
+
+    bK: { src         : './img/pieces/king_b.svg',
+          startCoords : ['e8'],
+        },
+
+    bN: { src         : './img/pieces/knight_b.svg',
+          startCoords : ['b8', 'g8'],
+        },
+
+    bQ: { src         : './img/pieces/queen_b.svg',
+          startCoords : ['d8'],
+        },
+
+    bR: { src         : './img/pieces/rook_b.svg',
+          startCoords : ['a8', 'h8'],
+        },
+
+    b:  { src         : './img/pieces/pawn_b.svg',
+          startCoords : ['a7', 'b7', 'c7', 'd7', 'e7', 'f7', 'g7', 'h7'],
+        }
     
 }
 
 const OFFSET = { x: 0, y: 0 };
-
 const CURRENT_GAME = []
+
 /**
  * Стартовая точка игры.
  */
 function init() {
-    canvas = document.getElementById("squares");
-    ctx = canvas.getContext("2d");
+    canvas = document.getElementById('squares');
+    ctx = canvas.getContext('2d');
     
     drawChessSquares();
     setUpPieces();
@@ -95,7 +79,7 @@ function init() {
     OFFSET.x = document.getElementById('squares').offsetLeft;
     OFFSET.y = document.getElementById('squares').offsetTop;
     
-    canvas.addEventListener("mousedown", handleMouseDown);
+    canvas.addEventListener('mousedown', handleMouseDown);
     
     console.log(CURRENT_GAME)
 }
@@ -110,7 +94,13 @@ function whatPiece(event) {
     let cursorX = parseInt(event.pageX - OFFSET.x)
     let cursorY = parseInt(event.pageY - OFFSET.y)
     
-    console.log(cartesianInChessCoords(cursorX, cursorY))
+    let result = CURRENT_GAME.find(({ coords }) => coords === cartesianInChessCoords(cursorX, cursorY));
+    if(result) {
+        console.log(result)
+    } else {
+        console.log(false)
+    }
+    
 }
 
 function createPiece(src, startCoords) {
@@ -120,23 +110,11 @@ function createPiece(src, startCoords) {
     piece.onload = () => { ctx.drawImage(piece, coord.x, coord.y) };
 }
 
-
 function setUpPieces() {
-    let x = 0
-    let y = 0
-    for(let piece in PIECES.black) {
-        for(let cn of PIECES.black[piece].startCoords) {
-            createPiece(PIECES.black[piece].src, cn);
-            CURRENT_GAME.push(PIECES.black[piece].chessNotation + '' + cn)
-        }
-    }
-    
-    x = 0
-    y = 0
-    for(let piece in PIECES.white) {
-        for(let cn of PIECES.white[piece].startCoords) {
-            createPiece(PIECES.white[piece].src, cn);
-            CURRENT_GAME.push(PIECES.white[piece].chessNotation + '' + cn)
+    for(piece in PIECES) {
+        for(let cn of PIECES[piece].startCoords) {
+            createPiece(PIECES[piece].src, cn);
+            CURRENT_GAME.push( { piece: piece,  coords: cn })
         }
     }
 }
@@ -175,5 +153,4 @@ function drawChessSquares() {
         x = 0;
         y += SIDE_OF_SQUARE;   
     }
-
 }
