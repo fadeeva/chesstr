@@ -10,43 +10,25 @@ const SQUARE_COLOR = {
     light: '#D1B386',
 }
 
-const PIECES = {  
-    black: {
-        figures: [ './img/pieces/bishop_b.svg',
-                   './img/pieces/king_b.svg',
-                   './img/pieces/knight_b.svg',
-                   './img/pieces/queen_b.svg',
-                   './img/pieces/rook_b.svg', ],
+const LETTER_TO_NUMBER = {a: 1, b: 2, c: 3, d: 4, e: 5, f: 6, g: 7, h: 8 }
 
-        pawn   :   './img/pieces/pawn_b.svg'
-    },
-
+const PIECES = { 
     white: {
-        figures: [ './img/pieces/bishop_w.svg',
-                   './img/pieces/king_w.svg',
-                   './img/pieces/knight_w.svg',
-                   './img/pieces/queen_w.svg',
-                   './img/pieces/rook_w.svg', ],
-
-        pawn   :   './img/pieces/pawn_w.svg'
+        bishop: { src: './img/pieces/bishop_w.svg', chess_notation: ['c1', 'f1'] },
+        king:   { src: './img/pieces/king_w.svg',   chess_notation: ['e1'] },
+        knight: { src: './img/pieces/knight_w.svg', chess_notation: ['b1', 'g1'] },
+        queen:  { src: './img/pieces/queen_w.svg',  chess_notation: ['d1'] },
+        rook:   { src: './img/pieces/rook_w.svg',   chess_notation: ['a1', 'h1'] },
+        pawn:   { src: './img/pieces/pawn_w.svg',   chess_notation: ['a2', 'b2', 'c2', 'd2', 'e2', 'f2', 'g2', 'h2'] }
     },
     
-    white_: {
-        bishop: { src: './img/pieces/bishop_w.svg', coord: ['c1', 'f1'] },
-        king:   { src: './img/pieces/king_w.svg',   coord: ['e1'] },
-        knight: { src: './img/pieces/knight_w.svg', coord: ['b1', 'g1'] },
-        queen:  { src: './img/pieces/queen_w.svg',  coord: ['d1'] },
-        rook:   { src: './img/pieces/rook_w.svg',   coord: ['a1', 'h1'] },
-        pawn:   { src: './img/pieces/pawn_w.svg',   coord: ['a2', 'b2', 'c2', 'd2', 'e2', 'f2', 'g2', 'h2'] }
-    },
-    
-    black_: {
-        bishop: { src: './img/pieces/bishop_b.svg', coord: ['c8', 'f'] },
-        king:   { src: './img/pieces/king_b.svg',   coord: ['e8'] },
-        knight: { src: './img/pieces/knight_b.svg', coord: ['b8', 'g8'] },
-        queen:  { src: './img/pieces/queen_b.svg',  coord: ['d8'] },
-        rook:   { src: './img/pieces/rook_b.svg',   coord: ['a8', 'h8'] },
-        pawn:   { src: './img/pieces/pawn_b.svg',   coord: ['a7', 'b7', 'c7', 'd7', 'e7', 'f7', 'g7', 'h7'] }
+    black: {
+        bishop: { src: './img/pieces/bishop_b.svg', chess_notation: ['c8', 'f8'] },
+        king:   { src: './img/pieces/king_b.svg',   chess_notation: ['e8'] },
+        knight: { src: './img/pieces/knight_b.svg', chess_notation: ['b8', 'g8'] },
+        queen:  { src: './img/pieces/queen_b.svg',  chess_notation: ['d8'] },
+        rook:   { src: './img/pieces/rook_b.svg',   chess_notation: ['a8', 'h8'] },
+        pawn:   { src: './img/pieces/pawn_b.svg',   chess_notation: ['a7', 'b7', 'c7', 'd7', 'e7', 'f7', 'g7', 'h7'] }
     },
     
 }
@@ -66,43 +48,39 @@ function init() {
     setUpPieces();
 }
 
-
-function createPiece(src, x, y) {
+function createPiece(src, chess_notation) {
     let piece = new Image();
+    let coord = transformCoords(chess_notation)
     piece.src = src
         piece.onload = () => {
-            ctx.drawImage(piece, x, y);
+            ctx.drawImage(piece, coord.x, coord.y);
         };
 }
 
 function setUpPieces() {
     let x = 0
     let y = 0
-    
-    for(let src of PIECES.black.figures) {
-        createPiece(src, x, y)
-        x += SIDE_OF_SQUARE
+    for(let piece in PIECES.black) {
+        for(let cn of PIECES.black[piece].chess_notation) {
+            createPiece(PIECES.black[piece].src, cn)
+        }
     }
     
     x = 0
-    for(let i = 0; i < 8; i++) {
-        createPiece(PIECES.black.pawn, x, SIDE_OF_SQUARE)
-        x += SIDE_OF_SQUARE
+    y = 0
+    for(let piece in PIECES.white) {
+        for(let cn of PIECES.white[piece].chess_notation) {
+            createPiece(PIECES.white[piece].src, cn)
+        }
     }
-    
-    x = 0
-    y = 560
-    for(let src of PIECES.white.figures) {
-        createPiece(src, x, y)
-        x += SIDE_OF_SQUARE
-    }
-    
-    x = 0
-    for(let i = 0; i < 8; i++) {
-        createPiece(PIECES.white.pawn, x, y - SIDE_OF_SQUARE)
-        x += SIDE_OF_SQUARE
-    }
-    
+}
+
+function transformCoords(chess_notation) {
+    let x = LETTER_TO_NUMBER[chess_notation[0]] - 1
+    let y = 8 - parseInt(chess_notation[1])
+    x *= SIDE_OF_SQUARE
+    y *= SIDE_OF_SQUARE
+    return({x: x, y: y})
 }
 
 /**
