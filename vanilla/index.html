@@ -6,6 +6,7 @@
     <title>Chesstr</title>
     <link rel="stylesheet" href="css/flex_12_col.css">
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/module_windows.js"></script>
     <script src="js/index.js"></script>
 </head>
 <body>
@@ -68,7 +69,22 @@
                             <li>G</li>
                             <li>H</li>
                         </ul>
-
+                        
+                        <section id="module_windows_area">
+                            <div class="mod_wnd" id="guess_or_play">
+                                <div class="flex_container">
+                                    <div id="guess_game" class="white">
+                                        <h2 class="flex_container flex-start h-80">Guess<br>Debut</h2>
+                                        <section class="flex_container flex-end question_mark h-80">?</section>
+                                    </div>
+                                    <div id="play_game" class="brown">
+                                        <section class="flex_container flex-start question_mark h-80">?</section>
+                                        <h2 class="flex_container flex-end h-80">Play<br>Debut</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        
                         <canvas id="squares" width="648" height="648"></canvas>
 
                         <ul id="border_bottom">

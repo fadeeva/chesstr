@@ -22,6 +22,13 @@
     --green: #6BAB70;
 }
 
+.white { background: var(--white) }
+.black { background: var(--black) }
+.brown { background: var(--brown) }
+.beige { background: var(--beige) }
+.red   { background: var(--red)   }
+.green { background: var(--green) }
+
 body {
     background: var(--black);
     font-size: 21px;
@@ -125,8 +132,8 @@ ul {
 
 #desk_numbers li:nth-child(even) { border-right: 8px solid var(--beige); }
 #desk_numbers li:nth-child(odd) { border-right: 8px solid var(--black); }
-#desk_numbers li:last-child { margin-right: -6px; }
-#desk_numbers li:nth-child(2) { margin-right: -1px; }
+#desk_numbers li:last-child { margin-right: -8px; }
+#desk_numbers li:nth-child(2) { margin-right: -2px; }
 
 #border_right li { margin-left: -2px; }
 #border_right li:nth-child(odd) { border-left: 8px solid var(--beige); }
@@ -162,6 +169,51 @@ ul {
     justify-content: center;
     margin-bottom: 20px;
 }
+
+#module_windows_area {
+    position: absolute;
+    z-index: 6;
+    width: 640px;
+    height: 640px;
+    
+    margin: 44px 0 0 40px;
+}
+
+#guess_or_play {
+	width: 320px;
+    height: 160px;
+    
+    position: absolute;
+    top: 240px;
+    left: 160px;
+}
+
+#guess_or_play .flex_container div {
+	width: 160px;
+    height: 160px;
+    
+    cursor: pointer;
+    display: grid;
+}
+
+#module_windows_area .question_mark {
+    font-family: "Zodiak Regular";
+    font-size: 3.6em;
+    margin: 0 20px;
+}
+
+#module_windows_area h2 {
+    font-family: "Clash Light";
+    font-size: 1em;
+    margin: 0;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+#module_windows_area .white h2, #module_windows_area .white .question_mark { color: var(--brown); }
+#module_windows_area .brown h2, #module_windows_area .brown .question_mark { color: var(--white); }
+
+.h-80 { height: 80px; }
 
 #squares {
     position: relative;

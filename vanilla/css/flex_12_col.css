@@ -22,8 +22,8 @@ main, header, footer {
 
 /*---- Justify ----*/
 .center { justify-content: center; }
-.flex-end { justify-content: flex-end; }
-.flex-start { justify-content: flex-start; }
+.flex-end { justify-content: flex-end; align-items: center; }
+.flex-start { justify-content: flex-start; align-items: center; }
 .space-around { justify-content: space-around; }
 .space-between { justify-content: space-between; }
 /*-----------------*/
@@ -32,11 +32,13 @@ main, header, footer {
 .column-right {
     flex-direction: column;
     align-items: right;
+    justify-content: center;
 }
 
 .column-left {
     flex-direction: column;
     align-items: left;
+    justify-content: center;
 }
 
 .column-center {   
@@ -61,12 +63,12 @@ main, header, footer {
 /*---------------*/
 
 /*---- Colors ----*/
-.red { background-color: #FF5757; }
-.blue { background-color: #57EFFF; }
-.green { background-color: #6DFF57; }
-.yellow { background-color: #FFC257; }
-.grey { background-color: #3D3D3D; }
-.purple { background-color: #E799F3; }
+.red_flex    { background-color: #FF5757; }
+.blue_flex   { background-color: #57EFFF; }
+.green_flex  { background-color: #6DFF57; }
+.yellow_flex { background-color: #FFC257; }
+.grey_flex   { background-color: #3D3D3D; }
+.purple_flex { background-color: #E799F3; }
 /*---------------*/
 
 .flex_1, .flex_2, .flex_3,
