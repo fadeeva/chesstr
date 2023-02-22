@@ -42,11 +42,15 @@
                     <li></li>
                     <li></li>
                     <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
                 </ul>
 
-                <div class="flex_container center" id="game_name">
-                    <h1>Openings</h1>
-                </div>
+                <div class="flex_container center" id="points_border_bottom"></div>
                 <div class="flex_row center">
                     <div id="chess_desk">
                         <ul id="desk_numbers">
@@ -71,18 +75,45 @@
                         </ul>
                         
                         <section id="module_windows_area">
-                            <div class="mod_wnd" id="guess_or_play">
+                            <div class="mod_wnd display_none" id="guess_or_play">
                                 <div class="flex_container">
-                                    <div id="guess_game" class="white">
+                                    <div id="guess_game" class="black">
                                         <h2 class="flex_container flex-start h-80">Guess<br>Debut</h2>
                                         <section class="flex_container flex-end question_mark h-80">?</section>
                                     </div>
-                                    <div id="play_game" class="brown">
+                                    <div id="play_game" class="beige">
                                         <section class="flex_container flex-start question_mark h-80">?</section>
                                         <h2 class="flex_container flex-end h-80">Play<br>Debut</h2>
                                     </div>
                                 </div>
                             </div>
+                            
+                            <div class="mod_wnd" id="guess_debut">
+                                <div class="flex_container">
+                                    <div class="black">
+                                        <h2 class="flex_container flex-start h-60">Guess<br>Debut</h2>
+                                    </div>
+                                    
+                                    <div class="black">
+                                        <section class="flex_container question_mark h-60">?</section>
+                                    </div>
+                                    
+                                    <div class="black">
+                                        <ul>
+                                            <li>Open Game</li>
+                                            <li>Semi-Open Game</li>
+                                            <li>Closed Game</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex_container h-40">
+                                    <div class="black">statistics</div>
+                                    <div class="black">43</div>
+                                    <div class="black">start</div>
+                                </div>
+                            </div>
+                            
                         </section>
                         
                         <canvas id="squares" width="648" height="648"></canvas>

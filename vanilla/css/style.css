@@ -41,7 +41,7 @@ main {
     margin-top: 60px;
 }
 
-#game_name {
+#points_border_bottom {
 	border-top: 1px solid var(--white);
     margin: 0 0 24px 30px;
 }
@@ -170,6 +170,11 @@ ul {
     margin-bottom: 20px;
 }
 
+
+.display_none {
+    display: none;
+}
+
 #module_windows_area {
     position: absolute;
     z-index: 6;
@@ -179,7 +184,7 @@ ul {
     margin: 44px 0 0 40px;
 }
 
-#guess_or_play {
+#guess_or_play, #guess_debut {
 	width: 320px;
     height: 160px;
     
@@ -210,10 +215,12 @@ ul {
     box-sizing: border-box;
 }
 
-#module_windows_area .white h2, #module_windows_area .white .question_mark { color: var(--brown); }
-#module_windows_area .brown h2, #module_windows_area .brown .question_mark { color: var(--white); }
+#module_windows_area .black h2, #module_windows_area .black .question_mark { color: var(--beige); }
+#module_windows_area .beige h2, #module_windows_area .beige .question_mark { color: var(--black); }
 
 .h-80 { height: 80px; }
+.h-60 { height: 60px; }
+.h-40 { height: 40px; }
 
 #squares {
     position: relative;
@@ -229,5 +236,3 @@ ul {
     margin-left: 20px;
 }
 
-.brown { background: var(--brown); }
-.beige { background: var(--white); }
