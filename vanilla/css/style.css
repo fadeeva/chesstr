@@ -194,33 +194,99 @@ ul {
 }
 
 #guess_or_play .flex_container div {
+/*
 	width: 160px;
     height: 160px;
+*/
     
     cursor: pointer;
     display: grid;
+    
+/*
+    margin: 0 20px 20px 20px;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+*/
 }
 
 #module_windows_area .question_mark {
     font-family: "Zodiak Regular";
     font-size: 3.6em;
-    margin: 0 20px;
+    margin: 0;
+    padding: 0;
+/*    margin: 0 20px;*/
+}
+
+#guess_debut {
+    padding-top: 12px;
+    box-sizing: border-box;
+}
+
+#guess_debut .question_mark {
+    font-size: 2.86em;
+    margin-top: -12px;
+    box-sizing: border-box;
 }
 
 #module_windows_area h2 {
     font-family: "Clash Light";
     font-size: 1em;
+    font-weight: 100;
     margin: 0;
-    padding: 16px;
+/*    padding: 16px;*/
     box-sizing: border-box;
 }
+
+#module_windows_area .black { color: var(--beige); }
 
 #module_windows_area .black h2, #module_windows_area .black .question_mark { color: var(--beige); }
 #module_windows_area .beige h2, #module_windows_area .beige .question_mark { color: var(--black); }
 
-.h-80 { height: 80px; }
-.h-60 { height: 60px; }
-.h-40 { height: 40px; }
+#guess_debut ul li {
+    font-family: "Clash Medium";
+    font-size: .57em;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    margin-bottom: 18px;
+    cursor: pointer;
+}
+
+.stat_link {
+    font-family: "Zodiak Regular";
+    font-size: 0.86em;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.nmb_of_games {
+    font-family: "Clash Medium";
+    font-size: 1em;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.start_btn {
+	background: var(--white);
+    width: 80px;
+    height: 40px;
+    font-family: "Zodiak Regular";
+    color: var(--black);
+    font-size: 0.86em;
+    text-align: center;
+    padding-top: 6px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.h-120 { height: 120px; }
+.h-80  { height: 80px;  }
+.h-60  { height: 60px;  }
+.h-40  { height: 40px;  }
+
+.w-160 { width: 160px; }
+.w-120 { width: 120px; }
+.w-80  { width: 80px;  }
+.w-40  { width: 40px;  }
 
 #squares {
     position: relative;

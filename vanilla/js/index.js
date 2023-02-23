@@ -1,5 +1,7 @@
 window.onload = function() { init(); }
 
+console.log(GAMES)
+
 let canvas = null;
 let ctx = null;
 

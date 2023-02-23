@@ -22,7 +22,7 @@ main, header, footer {
 
 /*---- Justify ----*/
 .center { justify-content: center; }
-.flex-end { justify-content: flex-end; align-items: center; }
+.flex-end { justify-content: flex-end; }
 .flex-start { justify-content: flex-start; align-items: center; }
 .space-around { justify-content: space-around; }
 .space-between { justify-content: space-between; }

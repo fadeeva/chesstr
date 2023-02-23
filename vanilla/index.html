@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/flex_12_col.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/module_windows.js"></script>
+    <script src="js/games.js"></script>
     <script src="js/index.js"></script>
 </head>
 <body>
@@ -75,42 +76,64 @@
                         </ul>
                         
                         <section id="module_windows_area">
-                            <div class="mod_wnd display_none" id="guess_or_play">
-                                <div class="flex_container">
-                                    <div id="guess_game" class="black">
-                                        <h2 class="flex_container flex-start h-80">Guess<br>Debut</h2>
-                                        <section class="flex_container flex-end question_mark h-80">?</section>
+                            <div class="mod_wnd" id="guess_or_play">
+                                <div class="flex_row">
+                                    <div id="guess_game" class="black flex_container">
+                                        <div class="flex_container">
+                                            <h2 class="flex_container column-center w-80 h-80">Guess<br>Debut</h2>
+                                            <div class="flex_container w-80 h-80"></div>
+                                        </div>
+                                        
+                                        <div class="flex_container">
+                                            <div class="flex_container w-80 h-80"></div>
+                                            <span class="flex_container column-center question_mark w-80 h-80">?</span>
+                                        </div>
                                     </div>
-                                    <div id="play_game" class="beige">
-                                        <section class="flex_container flex-start question_mark h-80">?</section>
-                                        <h2 class="flex_container flex-end h-80">Play<br>Debut</h2>
+                                    
+                                    <div id="play_game" class="beige flex_container">
+                                        <div class="flex_container">
+                                            <span class="flex_container column-center question_mark w-80 h-80">?</span>
+                                            <div class="flex_container w-80 h-80"></div>
+                                        </div>
+                                        
+                                        <div class="flex_container">
+                                            <div class="flex_container w-80 h-80"></div>
+                                            <h2 class="flex_container column-center w-80 h-80">Play<br>Debut</h2>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             
-                            <div class="mod_wnd" id="guess_debut">
-                                <div class="flex_container">
-                                    <div class="black">
-                                        <h2 class="flex_container flex-start h-60">Guess<br>Debut</h2>
+                            <div class="mod_wnd black display_none" id="guess_debut">
+                                <div class="flex_container column">
+                                    <div class="flex_container h-120">
+                                        <div class="black">
+                                            <h2 class="flex_container w-80 flex-end">Guess<br>Debut</h2>
+                                        </div>
+
+                                        <div class="black">
+                                            <span class="flex_container center question_mark w-80">?</span>
+                                        </div>
+
+                                        <div class="black w-160">
+                                            <ul>
+                                                <li>Open Game</li>
+                                                <li>Semi-Open Game</li>
+                                                <li>Closed Game</li>
+                                            </ul>
+                                        </div>
                                     </div>
-                                    
-                                    <div class="black">
-                                        <section class="flex_container question_mark h-60">?</section>
+
+                                    <div class="flex_container h-40">
+                                        <div class="black w-160 flex_container column-center">
+                                            <span class="stat_link">statistics</span>
+                                        </div>
+                                        <div class="black w-80 flex_container column-center">
+                                            <span class="nmb_of_games">43</span>
+                                        </div>
+                                        <div class="start_btn">start</div>
                                     </div>
-                                    
-                                    <div class="black">
-                                        <ul>
-                                            <li>Open Game</li>
-                                            <li>Semi-Open Game</li>
-                                            <li>Closed Game</li>
-                                        </ul>
-                                    </div>
-                                </div>
                                 
-                                <div class="flex_container h-40">
-                                    <div class="black">statistics</div>
-                                    <div class="black">43</div>
-                                    <div class="black">start</div>
                                 </div>
                             </div>
                             
