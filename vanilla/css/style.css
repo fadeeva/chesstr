@@ -193,6 +193,15 @@ ul {
     left: 160px;
 }
 
+#guess_debut_stat {
+	width: 640px;
+    height: 320px;
+    
+    position: absolute;
+    top: 160px;
+    left: 0px;
+}
+
 #guess_or_play .flex_container div {
 /*
 	width: 160px;
@@ -251,6 +260,45 @@ ul {
     cursor: pointer;
 }
 
+#guess_debut_stat h3 {
+	font-family: "Clash Medium";
+    font-size: .48em;
+    font-weight: 100;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    padding: 0;
+    margin: 0;
+}
+
+.nmb_of_win, .nmb_of_lose {
+    padding-left: 20px;
+    box-sizing: border-box;
+    
+    font-family: "Clash Medium";
+    font-size: 1em;
+}
+
+.nmb_of_win { color: var(--green); }
+.nmb_of_lose { color: var(--red); }
+
+#guess_debut_stat .list_of_ li {
+    margin: 0;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+}
+
+#guess_debut_stat .list_of_.win  li { background: var(--green); }
+#guess_debut_stat .list_of_.lose li { background: var(--red); }
+
+#guess_debut_stat .list_of_ li:nth-child(1),
+#guess_debut_stat .list_of_ li:nth-child(4n+1),
+#guess_debut_stat .list_of_ li:nth-child(4n+2) { margin-right: 20px; }
+
+#guess_debut_stat .list_of_ li:nth-child(4n),
+#guess_debut_stat .list_of_ li:nth-child(4n-1) { margin-left: 20px; }
+
 .stat_link {
     font-family: "Zodiak Regular";
     font-size: 0.86em;
@@ -265,19 +313,37 @@ ul {
     cursor: pointer;
 }
 
-.start_btn {
-	background: var(--white);
+.start_btn, .back_btn, .close_btn {
     width: 80px;
     height: 40px;
-    font-family: "Zodiak Regular";
-    color: var(--black);
-    font-size: 0.86em;
     text-align: center;
     padding-top: 6px;
     box-sizing: border-box;
     cursor: pointer;
 }
 
+.start_btn, .back_btn {
+    font-family: "Zodiak Regular";   
+    font-size: 0.86em;
+}
+
+.close_btn {
+	font-family: "Clash Medium";
+    font-size: 1em;
+}
+
+.start_btn, .close_btn {
+    background: var(--white);
+    color: var(--black);
+}
+
+.back_btn {
+	background: var(--black);
+    color: var(--white);
+    text-decoration: underline;
+}
+
+.h-240 { height: 240px; }
 .h-120 { height: 120px; }
 .h-80  { height: 80px;  }
 .h-60  { height: 60px;  }

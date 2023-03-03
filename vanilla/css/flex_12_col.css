@@ -10,6 +10,7 @@ main, header, footer {
 
 .flex_row { display: flex;  height: 100%; }
 .flex_container { display: flex;  height: 100%; }
+.flex_ { display: flex; }
 
 /*---- Columns ----*/
 .flex_1 { flex: 12; }
@@ -75,6 +76,8 @@ main, header, footer {
 .flex_4, .flex_6, .flex_12 { 
     
 }
+
+.flex_wrap { flex-wrap: wrap; }
 
 
 /*---- MOBILE ----*/
