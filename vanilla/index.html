@@ -137,7 +137,7 @@
                                 </div>
                             </div>
                             
-                            <div class="mod_wnd black" id="guess_debut_stat">
+                            <div class="mod_wnd black display_none" id="guess_debut_stat">
                                 <div class="flex_container column">
                                     <div class="flex_container column h-80">
                                         <div class="flex_container h-40 flex-end">
@@ -270,6 +270,79 @@
                                 </div>
                             </div>
                             
+                            
+                            <div class="mod_wnd black" id="guess_debut_game_list">
+                                <div class="flex_container column">
+                                    <div class="flex_container h-40 flex-end">
+                                        <div class="black w-80 flex_container column-center">
+                                            <span class="nmb_of_games">43</span>
+                                        </div>
+                                        <div class="close_btn">X</div>
+                                    </div>
+                                       
+                                    <div class="flex_container">
+                                        <section id="game_list" class="scroll_cnt">
+                                            <h3>Open Game</h3>
+                                                <ul>
+                                                    <li class="">Center Game</li>
+                                                    <li class="">Danish Gambit</li>
+                                                    <li class="">King's Gambit</li>
+                                                    <li class="">Vienna Game</li>
+                                                    <li class="">Elephant Gambit</li>
+                                                    <li class="">Latvian Gambit</li>
+                                                    <li class="">Italian Opening</li>
+                                                    <li class="">Evans Gambit</li>
+                                                    <li class="">Two Knights Defence</li>
+                                                    <li class="">Four Knights Game</li>
+                                                    <li class="">Scotch Game</li>
+                                                    <li class="">Ruy Lopez</li>
+                                                    <li class="">Ruy Lopez: Exchange Variation</li>
+                                                    <li class="">Ruy Lopez: Riga Variation</li>
+                                                    <li class="">Ruy Lopez: Closed</li>
+                                                    <li class="">Ruy Lopez: Marshall Gambit</li>
+                                                    <li class="">Philidor Defence</li>
+                                                    <li class="">Petrov Defence</li>
+                                                </ul>
+
+                                            <h3>Semi-Open Game</h3>
+                                                <ul>
+                                                    <li class="">Scandinavian Defense</li>
+                                                    <li class="">Alekhine's Defence</li>
+                                                    <li class="">Caro–Kann Defence</li>
+                                                    <li class="">French Defence</li>
+                                                    <li class="">Sicilian Defense: Closed</li>
+                                                    <li class="">Sicilian Defense: Dragon Variation</li>
+                                                    <li class="">Sicilian Defense: Najdorf Variation</li>
+                                                    <li class="">Sicilian Defense: Scheveningen Variation</li>
+                                                    <li class="">Sicilian Defense: Lasker-Pelikan Variation</li>
+                                                    <li class="">Sicilian Defense: Kan Variation</li>
+                                                </ul>
+
+                                            <h3>Closed Game</h3>
+                                                <ul>
+                                                    <li class="">Queen's Gambit</li>
+                                                    <li class="">Queen's Gambit Accepted</li>
+                                                    <li class="">Queen's Gambit Declined</li>
+                                                    <li class="">Slav Defense</li>
+                                                    <li class="">Catalan Opening</li>
+                                                    <li class="">Blackmar–Diemer Gambit</li>
+                                                    <li class="">Budapest Gambit</li>
+                                                    <li class="">Nimzo-Indian Defence</li>
+                                                    <li class="">Queen's Indian Defense</li>
+                                                    <li class="">King's Indian Defence</li>
+                                                    <li class="">Benko Gambit</li>
+                                                    <li class="">Grünfeld Defence</li>
+                                                    <li class="">Dutch Defence</li>
+                                                    <li class="">English Opening</li>
+                                                    <li class="">Réti Opening</li>
+                                                </ul>
+                                        </section>
+                                    </div>
+                                
+                                </div>
+                            </div>
+                            
+                            
                         </section>
                         
                         <canvas id="squares" width="648" height="648"></canvas>
@@ -301,7 +374,64 @@
             </div>
         </div>
 
-        <div class="flex_3 flex_container flex-start"></div>
+        <div class="flex_3 flex_container column">
+            <section id="stat_game_list" class="scroll_cnt display_none">
+                <h3>Open Game</h3>
+                    <ul>
+                        <li class="green_txt">Center Game</li>
+                        <li class="red_txt">Danish Gambit</li>
+                        <li class="green_txt">King's Gambit</li>
+                        <li class="green_txt">Vienna Game</li>
+                        <li class="red_txt">Elephant Gambit</li>
+                        <li class="red_txt">Latvian Gambit</li>
+                        <li class="green_txt">Italian Opening</li>
+                        <li class="green_txt">Evans Gambit</li>
+                        <li class="green_txt">Two Knights Defence</li>
+                        <li class="red_txt">Four Knights Game</li>
+                        <li class="green_txt">Scotch Game</li>
+                        <li class="green_txt">Ruy Lopez</li>
+                        <li class="green_txt">Ruy Lopez: Exchange Variation</li>
+                        <li class="red_txt">Ruy Lopez: Riga Variation</li>
+                        <li class="green_txt">Ruy Lopez: Closed</li>
+                        <li class="green_txt">Ruy Lopez: Marshall Gambit</li>
+                        <li class="green_txt">Philidor Defence</li>
+                        <li class="green_txt">Petrov Defence</li>
+                    </ul>
+
+                <h3>Semi-Open Game</h3>
+                    <ul>
+                        <li class="red_txt">Scandinavian Defense</li>
+                        <li class="green_txt">Alekhine's Defence</li>
+                        <li class="green_txt">Caro–Kann Defence</li>
+                        <li class="red_txt">French Defence</li>
+                        <li class="green_txt">Sicilian Defense: Closed</li>
+                        <li class="red_txt">Sicilian Defense: Dragon Variation</li>
+                        <li class="red_txt">Sicilian Defense: Najdorf Variation</li>
+                        <li class="green_txt">Sicilian Defense: Scheveningen Variation</li>
+                        <li class="green_txt">Sicilian Defense: Lasker-Pelikan Variation</li>
+                        <li class="green_txt">Sicilian Defense: Kan Variation</li>
+                    </ul>
+
+                <h3>Closed Game</h3>
+                    <ul>
+                        <li class="red_txt">Queen's Gambit</li>
+                        <li class="green_txt">Queen's Gambit Accepted</li>
+                        <li class="green_txt">Queen's Gambit Declined</li>
+                        <li class="red_txt">Slav Defense</li>
+                        <li class="red_txt">Catalan Opening</li>
+                        <li class="green_txt">Blackmar–Diemer Gambit</li>
+                        <li class="green_txt">Budapest Gambit</li>
+                        <li class="red_txt">Nimzo-Indian Defence</li>
+                        <li class="green_txt">Queen's Indian Defense</li>
+                        <li class="green_txt">King's Indian Defence</li>
+                        <li class="red_txt">Benko Gambit</li>
+                        <li class="green_txt">Grünfeld Defence</li>
+                        <li class="green_txt">Dutch Defence</li>
+                        <li class="red_txt">English Opening</li>
+                        <li class="green_txt">Réti Opening</li>
+                    </ul>
+            </section>
+        </div>
 
     </main>
 </body>

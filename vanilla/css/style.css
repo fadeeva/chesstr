@@ -29,6 +29,20 @@
 .red   { background: var(--red)   }
 .green { background: var(--green) }
 
+.white_txt { color: var(--white) }
+.black_txt { color: var(--black) }
+.brown_txt { color: var(--brown) }
+.beige_txt { color: var(--beige) }
+.red_txt   { color: var(--red)   }
+.green_txt { color: var(--green) }
+
+
+
+
+
+
+
+
 body {
     background: var(--black);
     font-size: 21px;
@@ -171,9 +185,7 @@ ul {
 }
 
 
-.display_none {
-    display: none;
-}
+.display_none { display: none; }
 
 #module_windows_area {
     position: absolute;
@@ -200,6 +212,15 @@ ul {
     position: absolute;
     top: 160px;
     left: 0px;
+}
+
+#guess_debut_game_list {
+    width: 320px;
+    height: 640px;
+    
+    position: absolute;
+    top: 0px;
+    left: 160px;
 }
 
 #guess_or_play .flex_container div {
@@ -260,9 +281,8 @@ ul {
     cursor: pointer;
 }
 
-#guess_debut_stat h3 {
+#guess_debut_stat h3, #stat_game_list h3, #game_list h3 {
 	font-family: "Clash Medium";
-    font-size: .48em;
     font-weight: 100;
     color: var(--white);
     text-transform: uppercase;
@@ -270,6 +290,66 @@ ul {
     padding: 0;
     margin: 0;
 }
+
+#guess_debut_stat h3 { font-size: .48em; }
+
+.scroll_cnt::-webkit-scrollbar { width: 10px; }
+.scroll_cnt {
+    overflow-y: auto;
+    
+    scrollbar-width: thin;
+    scrollbar-color: var(--beige) var(--black);
+}
+.scroll_cnt::-webkit-scrollbar-track { background: var(--black); }
+.scroll_cnt::-webkit-scrollbar-thumb {
+    background-color: var(--beige) ;
+    border-radius: 6px;
+    border: 3px solid var(--black);
+}
+
+#stat_game_list {
+    flex-grow: 1;
+    height: 660px;
+}
+
+#game_list {
+    flex-grow: 1;
+    height: 560px;
+}
+
+#stat_game_list h3, #game_list h3 {
+    font-size: .57em;
+    margin-bottom: .57em;
+}
+
+#stat_game_list {
+    margin-top: 80px;
+    margin-left: 10px;
+}
+
+#game_list {
+	margin-left: 58px;
+    margin-top: 40px;
+}
+
+#game_list h3 {
+	font-family: "Clash Medium";
+    font-weight: 100;
+    color: var(--beige);
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    padding: 0;
+    margin: 0;
+}
+
+#stat_game_list ul, #game_list ul { 
+    margin-bottom: 0.57em;
+    font-family: "Poppins Light";
+    font-size: .57em;
+    color: var(--beige);
+}
+
+#stat_game_list ul li, #game_list ul li { margin: 2px 0; }
 
 .nmb_of_win, .nmb_of_lose {
     padding-left: 20px;
