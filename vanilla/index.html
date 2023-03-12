@@ -137,7 +137,7 @@
                                 </div>
                             </div>
                             
-                            <div class="mod_wnd black display_none" id="guess_debut_stat">
+                            <div class="mod_wnd black display_none" id="guess_debut_stat_more">
                                 <div class="flex_container column">
                                     <div class="flex_container column h-80">
                                         <div class="flex_container h-40 flex-end">
@@ -270,8 +270,50 @@
                                 </div>
                             </div>
                             
+                            <div class="mod_wnd black" id="guess_debut_stat_full">
+                                <div class="flex_container column">
+                                    <div class="flex_container h-80">
+                                        
+                                        <div class="green w-80 h-80 flex_container column-center">
+                                            <span class="nmb_of_games victory">24</span>
+                                        </div>
+                                        
+                                        <div class="w-240 flex_container column-center"></div>
+                                        
+                                        <div class="w-80 h-40 flex_container column-center">
+                                            <span class="nmb_of_games">43</span>
+                                        </div>
+
+                                        <div class="w-160 h-40 flex_container column-center">
+                                            <span class="stat_link">statistics</span>
+                                        </div>
+                                        
+                                        <div class="black w-80 flex_container column">
+                                            <div class="flex_container h-40">
+                                                <div class="close_btn">X</div>
+                                            </div>
+                                            <div class="flex_container h-40">
+                                                <div class="back_btn">more</div>
+                                            </div>
+                                        </div>
+                                        
+
+                                    </div>
+                                    
+                                    <div class="green flex_ column h-160">
+
+                                    </div>
+                                    
+                                    <div class="red flex_ column h-80">
+
+                                    </div>
+                                </div>
+                            </div>
                             
-                            <div class="mod_wnd black" id="guess_debut_game_list">
+                            
+                            
+                            
+                            <div class="mod_wnd black display_none" id="guess_debut_game_list">
                                 <div class="flex_container column">
                                     <div class="flex_container h-40 flex-end">
                                         <div class="black w-80 flex_container column-center">
@@ -341,8 +383,42 @@
                                 
                                 </div>
                             </div>
-                            
-                            
+
+                            <div class="mod_wnd black display_none" id="guess_debut_result">
+                                <div class="flex_container column">
+                                    <div class="flex_container h-80">
+                                        <div class="black w-80 h-80 flex_container column-center">
+                                            <span class="nmb_of_games">43</span>
+                                        </div>
+
+                                        <div class="green w-80 h-80 flex_container column-center">
+                                            <span class="nmb_of_games victory">24</span>
+                                        </div>
+                                        
+                                        <div class="black w-80 flex_container column-center"></div>
+                                        <div class="close_btn">X</div>
+                                    </div>
+
+                                    <div class="flex_container h-80">
+                                        <div class="red w-80 h-80 flex_container column-center">
+                                            <span class="nmb_of_games defeat">19</span>
+                                        </div>
+                                        
+                                        <div class="flex_container column">
+                                            <div class="w-240 h-40 flex_ row"></div>
+                                        
+                                            <div class="w-240 h-40 flex_ row">
+                                                <div class="black w-160 flex_container column-center">
+                                                    <span class="stat_link">statistics</span>
+                                                </div>
+
+                                                <div class="start_btn">start</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                </div>
+                            </div>
                         </section>
                         
                         <canvas id="squares" width="648" height="648"></canvas>
@@ -375,7 +451,7 @@
         </div>
 
         <div class="flex_3 flex_container column">
-            <section id="stat_game_list" class="scroll_cnt display_none">
+            <section id="stat_game_list" class="scroll_cnt">
                 <h3>Open Game</h3>
                     <ul>
                         <li class="green_txt">Center Game</li>

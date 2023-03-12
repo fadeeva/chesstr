@@ -196,7 +196,7 @@ ul {
     margin: 44px 0 0 40px;
 }
 
-#guess_or_play, #guess_debut {
+#guess_or_play, #guess_debut, #guess_debut_result {
 	width: 320px;
     height: 160px;
     
@@ -205,7 +205,7 @@ ul {
     left: 160px;
 }
 
-#guess_debut_stat {
+#guess_debut_stat_more, #guess_debut_stat_full {
 	width: 640px;
     height: 320px;
     
@@ -281,7 +281,7 @@ ul {
     cursor: pointer;
 }
 
-#guess_debut_stat h3, #stat_game_list h3, #game_list h3 {
+#guess_debut_stat_more h3, #guess_debut_stat_full h3, #stat_game_list h3, #game_list h3 {
 	font-family: "Clash Medium";
     font-weight: 100;
     color: var(--white);
@@ -291,7 +291,7 @@ ul {
     margin: 0;
 }
 
-#guess_debut_stat h3 { font-size: .48em; }
+#guess_debut_stat_more h3, #guess_debut_stat_full h3 { font-size: .48em; }
 
 .scroll_cnt::-webkit-scrollbar { width: 10px; }
 .scroll_cnt {
@@ -339,17 +339,29 @@ ul {
     text-transform: uppercase;
     letter-spacing: 0.25em;
     padding: 0;
-    margin: 0;
+    margin: 0 0 20px 0;
 }
 
+#game_list ul { margin-bottom: 20px; }
+#stat_game_list ul { margin-bottom: 0.57em; }
+
+#game_list h3, #game_list ul li { cursor: pointer;}
+
 #stat_game_list ul, #game_list ul { 
-    margin-bottom: 0.57em;
     font-family: "Poppins Light";
     font-size: .57em;
     color: var(--beige);
 }
 
 #stat_game_list ul li, #game_list ul li { margin: 2px 0; }
+
+#guess_debut_result .nmb_of_games,
+#guess_debut_game_list .nmb_of_games,
+#guess_debut_stat_more .nmb_of_games,
+#guess_debut_stat_full .nmb_of_games
+{ text-decoration: none; }
+
+#guess_debut_stat_full .stat_link { text-decoration: none; }
 
 .nmb_of_win, .nmb_of_lose {
     padding-left: 20px;
@@ -362,22 +374,22 @@ ul {
 .nmb_of_win { color: var(--green); }
 .nmb_of_lose { color: var(--red); }
 
-#guess_debut_stat .list_of_ li {
+#guess_debut_stat_more .list_of_ li {
     margin: 0;
     padding: 0;
     width: 20px;
     height: 20px;
 }
 
-#guess_debut_stat .list_of_.win  li { background: var(--green); }
-#guess_debut_stat .list_of_.lose li { background: var(--red); }
+#guess_debut_stat_more .list_of_.win  li { background: var(--green); }
+#guess_debut_stat_more .list_of_.lose li { background: var(--red); }
 
-#guess_debut_stat .list_of_ li:nth-child(1),
-#guess_debut_stat .list_of_ li:nth-child(4n+1),
-#guess_debut_stat .list_of_ li:nth-child(4n+2) { margin-right: 20px; }
+#guess_debut_stat_more .list_of_ li:nth-child(1),
+#guess_debut_stat_more .list_of_ li:nth-child(4n+1),
+#guess_debut_stat_more .list_of_ li:nth-child(4n+2) { margin-right: 20px; }
 
-#guess_debut_stat .list_of_ li:nth-child(4n),
-#guess_debut_stat .list_of_ li:nth-child(4n-1) { margin-left: 20px; }
+#guess_debut_stat_more .list_of_ li:nth-child(4n),
+#guess_debut_stat_more .list_of_ li:nth-child(4n-1) { margin-left: 20px; }
 
 .stat_link {
     font-family: "Zodiak Regular";
@@ -391,6 +403,11 @@ ul {
     font-size: 1em;
     text-decoration: underline;
     cursor: pointer;
+}
+
+.nmb_of_games.victory, .nmb_of_games.defeat {
+	color: var(--white);
+    text-decoration: none;
 }
 
 .start_btn, .back_btn, .close_btn {
@@ -424,11 +441,13 @@ ul {
 }
 
 .h-240 { height: 240px; }
+.h-160 { height: 160px; }
 .h-120 { height: 120px; }
 .h-80  { height: 80px;  }
 .h-60  { height: 60px;  }
 .h-40  { height: 40px;  }
 
+.w-240 { width: 240px; }
 .w-160 { width: 160px; }
 .w-120 { width: 120px; }
 .w-80  { width: 80px;  }
