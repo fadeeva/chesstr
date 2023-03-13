@@ -307,6 +307,11 @@ ul {
     border: 3px solid var(--black);
 }
 
+
+#full_stat_graph {
+    flex-grow: 1;
+}
+
 #stat_game_list {
     flex-grow: 1;
     height: 660px;
@@ -390,6 +395,12 @@ ul {
 
 #guess_debut_stat_more .list_of_ li:nth-child(4n),
 #guess_debut_stat_more .list_of_ li:nth-child(4n-1) { margin-left: 20px; }
+
+#full_stat_graph ul { margin: 0 28px; }
+
+#full_stat_graph ul li { margin-right: 18px; }
+
+#full_stat_graph ul li div { width: 8px; }
 
 .stat_link {
     font-family: "Zodiak Regular";
