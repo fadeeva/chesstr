@@ -307,9 +307,35 @@ ul {
     border: 3px solid var(--black);
 }
 
+::-webkit-scrollbar{width:2px;height:2px;}
+::-webkit-scrollbar-button{width:2px;height:2px;}
 
-#full_stat_graph {
-    flex-grow: 1;
+.scroll_cnt_horizontal {
+    position:absolute;
+    display:block;
+
+    width: 160px;
+    max-height: 580px;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transform: rotate(-90deg) translateY(-126px) translateX(1px);
+    transform-origin: right top;
+}
+.scroll_cnt_horizontal ul li{
+    
+    transform: rotate(90deg) translateY(-60px);
+    width: 8px;
+    margin-top: -130px;
+}
+
+#full_stat_graph ul li div { width: 8px; }
+
+#full_stat_graph ul {
+    margin-top: 54px;
+    width: 160px;
+    padding-left: 14px;
 }
 
 #stat_game_list {
@@ -396,11 +422,8 @@ ul {
 #guess_debut_stat_more .list_of_ li:nth-child(4n),
 #guess_debut_stat_more .list_of_ li:nth-child(4n-1) { margin-left: 20px; }
 
-#full_stat_graph ul { margin: 0 28px; }
 
-#full_stat_graph ul li { margin-right: 18px; }
 
-#full_stat_graph ul li div { width: 8px; }
 
 .stat_link {
     font-family: "Zodiak Regular";
