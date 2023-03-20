@@ -184,9 +184,6 @@ ul {
     margin-bottom: 20px;
 }
 
-
-.display_none { display: none; }
-
 #module_windows_area {
     position: absolute;
     z-index: 6;
@@ -486,6 +483,8 @@ ul {
 .w-120 { width: 120px; }
 .w-80  { width: 80px;  }
 .w-40  { width: 40px;  }
+
+.display_none { display: none; }
 
 #squares {
     position: relative;

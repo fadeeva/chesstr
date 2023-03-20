@@ -1,6 +1,6 @@
 window.onload = function() { init(); }
 
-console.log(GAMES)
+//console.log(GAMES)
 
 let canvas = null;
 let ctx = null;
@@ -83,7 +83,7 @@ function init() {
     
     canvas.addEventListener('mousedown', handleMouseDown);
     
-    console.log(CURRENT_GAME)
+//    console.log(CURRENT_GAME)
 }
 
 function handleMouseDown(event) { 

@@ -6,7 +6,7 @@
     <title>Chesstr</title>
     <link rel="stylesheet" href="css/flex_12_col.css">
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/module_windows.js"></script>
+    
     <script src="js/games.js"></script>
     <script src="js/index.js"></script>
 </head>
@@ -104,7 +104,7 @@
                                 </div>
                             </div>
                             
-                            <div class="mod_wnd black display_none" id="guess_debut">
+                            <div class="mod_wnd black" id="guess_debut">
                                 <div class="flex_container column">
                                     <div class="flex_container h-120">
                                         <div class="black">
@@ -147,7 +147,7 @@
                                             <div class="black w-80 flex_container column-center">
                                                 <span class="nmb_of_games">43</span>
                                             </div>
-                                            <div class="close_btn">X</div>
+                                            <div class="close_btn guess_debut_stat_more">X</div>
                                         </div>
                                         <div class="flex_container h-40 flex-end">
                                             <div class="back_btn">back</div>
@@ -270,7 +270,7 @@
                                 </div>
                             </div>
                             
-                            <div class="mod_wnd black" id="guess_debut_stat_full">
+                            <div class="mod_wnd black display_none" id="guess_debut_stat_full">
                                 <div class="flex_container column">
                                     <div class="flex_container h-80">
                                         
@@ -290,7 +290,7 @@
                                         
                                         <div class="black w-80 flex_container column">
                                             <div class="flex_container h-40">
-                                                <div class="close_btn">X</div>
+                                                <div class="close_btn guess_debut_stat_full">X</div>
                                             </div>
                                             <div class="flex_container h-40">
                                                 <div class="back_btn">more</div>
@@ -481,16 +481,13 @@
                                 </div>
                             </div>
                             
-                            
-                            
-                            
                             <div class="mod_wnd black display_none" id="guess_debut_game_list">
                                 <div class="flex_container column">
                                     <div class="flex_container h-40 flex-end">
                                         <div class="black w-80 flex_container column-center">
                                             <span class="nmb_of_games">43</span>
                                         </div>
-                                        <div class="close_btn">X</div>
+                                        <div class="close_btn guess_debut_game_list">X</div>
                                     </div>
                                        
                                     <div class="flex_container">
@@ -567,7 +564,7 @@
                                         </div>
                                         
                                         <div class="black w-80 flex_container column-center"></div>
-                                        <div class="close_btn">X</div>
+                                        <div class="close_btn guess_debut_result">X</div>
                                     </div>
 
                                     <div class="flex_container h-80">
@@ -682,4 +679,5 @@
 
     </main>
 </body>
+<script src="js/module_windows.js"></script>
 </html>
