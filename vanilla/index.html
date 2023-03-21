@@ -16,8 +16,12 @@
         <aside class="flex_3 flex_container flex-end">
             <ul id="logo_block">
                 <li><img src="img/logos/chesstr_logo.svg" alt="Chesstr logo"></li>
-                <li><img src="img/logos/what-debut-is-it__active-logo.svg" alt="WhatDebutIsIt logo"></li>
-                <li><img src="img/logos/what-square-is-it__non-active-logo.svg" alt="WhatSquareIsIt logo"></li>
+                <li class="start_the_game_btn" id="what_debut_is_it">
+                    <img src="img/logos/what-debut-is-it__active-logo.svg" alt="WhatDebutIsIt logo">
+                </li>
+                <li class="start_the_game_btn" id="what_square_is_it">
+                    <img src="img/logos/what-square-is-it__non-active-logo.svg" alt="WhatSquareIsIt logo">
+                </li>
             </ul>
 
         </aside>
@@ -76,6 +80,7 @@
                         </ul>
                         
                         <section id="module_windows_area">
+                           
                             <div class="mod_wnd display_none" id="guess_or_play">
                                 <div class="flex_row">
                                     <div id="guess_game" class="black flex_container">
@@ -104,7 +109,7 @@
                                 </div>
                             </div>
                             
-                            <div class="mod_wnd black" id="guess_debut">
+                            <div class="mod_wnd black display_none" id="guess_debut">
                                 <div class="flex_container column">
                                     <div class="flex_container h-120">
                                         <div class="black">

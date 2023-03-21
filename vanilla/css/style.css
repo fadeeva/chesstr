@@ -90,7 +90,7 @@ h1 {
 
 #logo_block { margin-top: 120px; }
 
-#logo_block li { margin-bottom: 80px; }
+#logo_block li { margin-bottom: 80px; cursor: pointer; }
 
 ul { 
     list-style: none;
