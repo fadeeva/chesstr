@@ -16,8 +16,8 @@
         <aside class="flex_3 flex_container flex-end">
             <ul id="logo_block">
                 <li><img src="img/logos/chesstr_logo.svg" alt="Chesstr logo"></li>
-                <li class="start_the_game_btn" id="what_debut_is_it">
-                    <img src="img/logos/what-debut-is-it__active-logo.svg" alt="WhatDebutIsIt logo">
+                <li>
+                    <img src="img/logos/what-debut-is-it__active-logo.svg" alt="WhatDebutIsIt logo" class="next_node" id="what_debut_is_it" next_node="guess_or_play">
                 </li>
                 <li class="start_the_game_btn" id="what_square_is_it">
                     <img src="img/logos/what-square-is-it__non-active-logo.svg" alt="WhatSquareIsIt logo">
@@ -83,7 +83,7 @@
                            
                             <div class="mod_wnd display_none" id="guess_or_play">
                                 <div class="flex_row">
-                                    <div id="guess_game" class="black flex_container">
+                                    <div id="guess_game" next_node="guess_debut" class="black flex_container next_node">
                                         <div class="flex_container">
                                             <h2 class="flex_container column-center w-80 h-80">Guess<br>Debut</h2>
                                             <div class="flex_container w-80 h-80"></div>
@@ -95,7 +95,7 @@
                                         </div>
                                     </div>
                                     
-                                    <div id="play_game" class="beige flex_container">
+                                    <div id="play_game" class="beige flex_container next_node">
                                         <div class="flex_container">
                                             <span class="flex_container column-center question_mark w-80 h-80">?</span>
                                             <div class="flex_container w-80 h-80"></div>
@@ -131,7 +131,7 @@
 
                                     <div class="flex_container h-40">
                                         <div class="black w-160 flex_container column-center">
-                                            <span class="stat_link">statistics</span>
+                                            <span class="stat_link next_node" next_node="guess_debut_stat_full">statistics</span>
                                         </div>
                                         <div class="black w-80 flex_container column-center">
                                             <span class="nmb_of_games">43</span>
