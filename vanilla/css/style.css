@@ -202,6 +202,9 @@ ul {
     left: 160px;
 }
 
+#guess_debut_stat_more { z-index: 10; }
+#guess_debut_stat_full { z-index: 9; }
+
 #guess_debut_stat_more, #guess_debut_stat_full {
 	width: 640px;
     height: 320px;
