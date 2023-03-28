@@ -13,16 +13,19 @@ const moduleWindowsIDs = []
 
 let nextNode = document.querySelectorAll('.next_node')
 
+let statGameBars = document.getElementById('stat_bars_list').childNodes
+
+let gameID = -1
+let viewMoreStatBtn = document.getElementById('view_game_stat_btn')
+viewMoreStatBtn.addEventListener('click', () => openStatByGameID(gameID))
+
+statGameBars.forEach((bar) => {
+    bar.addEventListener('click', () => showMoreStat(event))
+})
+
 nextNode.forEach((node) => {
     node.addEventListener('click', () => openWin(event))
 })
-
-function openWin(e) {
-    let parent = e.currentTarget
-    let destination_id = parent.getAttribute("next_node")
-    let element = document.getElementById(destination_id)
-    element.classList.toggle('display_none') 
-}
 
 moduleWindowsArr.forEach((modWin) =>{
     moduleWindowsIDs.push(modWin.id)   
@@ -31,6 +34,31 @@ moduleWindowsArr.forEach((modWin) =>{
 closeBtn.forEach((btn) => {
     btn.addEventListener('click', () => closeWin(event))
 })
+
+function openStatByGameID(id) {
+    console.log(id)
+}
+
+function showMoreStat(e) {
+    gameID = e.currentTarget.getAttribute("game-id")
+    viewMoreStatBtn.classList.remove('display_none')
+    
+}
+
+function openWin(e) {
+    let parent = e.currentTarget
+    let destination_id = parent.getAttribute("next_node")
+    let element = document.getElementById(destination_id)
+    
+    if(destination_id == 'guess_or_play') {
+        moduleWindowsIDs.forEach((modWin) => {
+            document.getElementById(modWin).classList.add('display_none') 
+        })
+        document.getElementById(destination_id).classList.remove('display_none') 
+    } else {
+        element.classList.toggle('display_none')
+    }
+}
 
 function getID(btn) {
     let classArr = Object.values(btn.classList)

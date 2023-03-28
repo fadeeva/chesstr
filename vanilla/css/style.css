@@ -202,6 +202,8 @@ ul {
     left: 160px;
 }
 
+
+
 #guess_debut_stat_more { z-index: 10; }
 #guess_debut_stat_full { z-index: 9; }
 
@@ -331,6 +333,8 @@ ul {
 }
 
 #full_stat_graph ul li div { width: 8px; }
+
+#full_stat_graph ul li { cursor: pointer; }
 
 #full_stat_graph ul {
     margin-top: 54px;
