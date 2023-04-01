@@ -7,17 +7,13 @@
                       -> play_debut       
     
 */
-let closeBtn = document.querySelectorAll('.close_btn')
 const moduleWindowsArr = Object.values(document.querySelectorAll('.mod_wnd'))
 const moduleWindowsIDs = []
 
+let closeBtn = document.querySelectorAll('.close_btn')
 let nextNode = document.querySelectorAll('.next_node')
-
 let statGameBars = document.getElementById('stat_bars_list').childNodes
-
 let gameID = -1
-let viewMoreStatBtn = document.getElementById('view_game_stat_btn')
-viewMoreStatBtn.addEventListener('click', () => openStatByGameID(gameID))
 
 statGameBars.forEach((bar) => {
     bar.addEventListener('click', () => showMoreStat(event))
@@ -40,9 +36,13 @@ function openStatByGameID(id) {
 }
 
 function showMoreStat(e) {
-    gameID = e.currentTarget.getAttribute("game-id")
-    viewMoreStatBtn.classList.remove('display_none')
+    let gameID = e.currentTarget.getAttribute("game-id")
+    let more = document.getElementById('guess_debut_stat_more')
+    let game_list = document.getElementById('stat_game_list')
     
+    more.classList.remove('display_none')
+    game_list.classList.remove('display_none')
+    console.log(gameID)
 }
 
 function openWin(e) {
@@ -54,6 +54,7 @@ function openWin(e) {
         moduleWindowsIDs.forEach((modWin) => {
             document.getElementById(modWin).classList.add('display_none') 
         })
+        document.getElementById('module_windows_area').classList.remove('display_none')
         document.getElementById(destination_id).classList.remove('display_none') 
     } else {
         element.classList.toggle('display_none')
@@ -63,16 +64,13 @@ function openWin(e) {
 function getID(btn) {
     let classArr = Object.values(btn.classList)
     classArr = classArr.filter(e => e !== 'close_btn')
-    let wID = ''
-    classArr.forEach((cls) => {
-        if(moduleWindowsIDs.includes(cls))
-            wID = cls
-    })
-
-    return wID
+    return classArr
 }
 
 function closeWin(e) {
-    let modWindow = document.getElementById(getID(e.target))
-    modWindow.classList.add('display_none')
+    let modWindow = getID(e.target)    
+    modWindow.forEach((cls) => {
+        document.getElementById(cls).classList.add('display_none')
+    })
+    
 }

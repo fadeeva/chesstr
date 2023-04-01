@@ -393,15 +393,14 @@ ul {
 #guess_debut_result .nmb_of_games,
 #guess_debut_game_list .nmb_of_games,
 #guess_debut_stat_more .nmb_of_games,
-#guess_debut_stat_full .nmb_of_games
-{ text-decoration: none; }
+#guess_debut_stat_full .nmb_of_games { text-decoration: none; cursor: default; }
 
-#guess_debut_stat_full .stat_link { text-decoration: none; }
+#guess_debut_stat_full .stat_link,
+#guess_debut_stat_more .stat_link{ text-decoration: none; cursor: default; }
 
 .nmb_of_win, .nmb_of_lose {
     padding-left: 20px;
     box-sizing: border-box;
-    
     font-family: "Clash Medium";
     font-size: 1em;
 }
@@ -425,9 +424,6 @@ ul {
 
 #guess_debut_stat_more .list_of_ li:nth-child(4n),
 #guess_debut_stat_more .list_of_ li:nth-child(4n-1) { margin-left: 20px; }
-
-
-
 
 .stat_link {
     font-family: "Zodiak Regular";

@@ -81,21 +81,30 @@ function init() {
     OFFSET.x = document.getElementById('squares').offsetLeft;
     OFFSET.y = document.getElementById('squares').offsetTop;
     
-    canvas.addEventListener('mousedown', handleMouseDown);
+    guessDebut()
     
+    canvas.addEventListener("mousedown", handleMouseDown);
 //    console.log(CURRENT_GAME)
 }
 
 function handleMouseDown(event) { 
     event = event || window.event
     
-    whatPiece(event)
 }
+
+function guessDebut( startData = [{ type:'open', list: ['Center Game'] }] ) {
+    // random
+    let game = GAMES[startData[0].type].find(g => g.name === "Center Game");
+    
+    console.log(game.notation)
+}
+
+
 
 function whatPiece(event) {
     let cursorX = parseInt(event.pageX - OFFSET.x)
     let cursorY = parseInt(event.pageY - OFFSET.y)
-    
+    console.log('here')
     let result = CURRENT_GAME.find(({ coords }) => coords === cartesianInChessCoords(cursorX, cursorY));
     if(result) {
         console.log(result)

@@ -79,9 +79,9 @@
                             <li>H</li>
                         </ul>
                         
-                        <section id="module_windows_area">
+                        <section id="module_windows_area" class="display_none">
                            
-                            <div class="mod_wnd" id="guess_or_play">
+                            <div class="mod_wnd display_none" id="guess_or_play">
                                 <div class="flex_row">
                                     <div id="guess_game" next_node="guess_debut" class="black flex_container next_node">
                                         <div class="flex_container">
@@ -152,11 +152,11 @@
                                             <div class="black w-80 flex_container column-center">
                                                 <span class="nmb_of_games">43</span>
                                             </div>
-                                            <div class="close_btn guess_debut_stat_more">X</div>
+                                            <div class="close_btn guess_debut_stat_more stat_game_list">X</div>
                                         </div>
-                                        <div class="flex_container h-40 flex-end">
+                                        <!-- div class="flex_container h-40 flex-end">
                                             <div class="back_btn">back</div>
-                                        </div>
+                                        </div -->
                                     </div>
                                     
                                     <div class="flex_container h-240">
@@ -297,9 +297,9 @@
                                             <div class="flex_container h-40">
                                                 <div class="close_btn guess_debut_stat_full">X</div>
                                             </div>
-                                            <div class="flex_container h-40">
+                                            <!-- div class="flex_container h-40">
                                                 <div class="back_btn display_none" id="view_game_stat_btn">more</div>
-                                            </div>
+                                            </div -->
                                         </div>
                                         
 
@@ -582,7 +582,7 @@
                                         
                                             <div class="w-240 h-40 flex_ row">
                                                 <div class="black w-160 flex_container column-center">
-                                                    <span class="stat_link">statistics</span>
+                                                    <span next_node="guess_debut_stat_full" class="stat_link next_node">statistics</span>
                                                 </div>
 
                                                 <div class="start_btn">start</div>
@@ -615,7 +615,7 @@
                             <li></li>
                             <li></li>
                             <li></li>
-                            <li><div class="circle beige"></div></li>
+                            <li><div class="circle white"></div></li>
                         </ul>
                     
                     </div>
@@ -624,7 +624,7 @@
         </div>
 
         <div class="flex_3 flex_container column">
-            <section id="stat_game_list" class="scroll_cnt display_none" game-id="1">
+            <section id="stat_game_list" class="scroll_cnt display_none">
                 <h3>Open Game</h3>
                     <ul>
                         <li class="green_txt">Center Game</li>
