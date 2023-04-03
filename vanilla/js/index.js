@@ -89,22 +89,45 @@ function init() {
 
 function handleMouseDown(event) { 
     event = event || window.event
-    
+    //whatPiece(event)
 }
 
 function guessDebut( startData = [{ type:'open', list: ['Center Game'] }] ) {
     // random
     let game = GAMES[startData[0].type].find(g => g.name === "Center Game");
     
-    console.log(game.notation)
+    playGame(game.notation)
 }
 
-
+function playGame(chessCoords) {
+    /*chessCoords.forEach((move) => {
+        console.log(move)
+    })*/
+    
+    let move = chessCoords[0].split(' ')
+    white = move[0]
+    if(white.length == 4) {
+        piece = "w"
+        startCoord = white.slice(0, 2)
+        finishCoord = white.slice(2)
+        
+        f = CURRENT_GAME.indexOf(CURRENT_GAME.find(p => p.piece === "w" && p.coords == startCoord))
+        CURRENT_GAME[12].coords = finishCoord
+        
+        CURRENT_GAME.forEach((p) => {
+            // console.log(PIECES[p.piece])
+//            drawChessSquares() 
+            createPiece(PIECES[p.piece].src, p.coords)
+        })
+    }
+    
+    console.log(CURRENT_GAME)
+}
 
 function whatPiece(event) {
     let cursorX = parseInt(event.pageX - OFFSET.x)
     let cursorY = parseInt(event.pageY - OFFSET.y)
-    console.log('here')
+
     let result = CURRENT_GAME.find(({ coords }) => coords === cartesianInChessCoords(cursorX, cursorY));
     if(result) {
         console.log(result)
