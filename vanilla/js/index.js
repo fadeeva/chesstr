@@ -67,7 +67,6 @@ const PIECES = {
 
 const OFFSET = { x: 0, y: 0 };
 const CURRENT_GAME = []
-
 /**
  * Стартовая точка игры.
  */
@@ -84,7 +83,6 @@ function init() {
     guessDebut()
     
     canvas.addEventListener("mousedown", handleMouseDown);
-//    console.log(CURRENT_GAME)
 }
 
 function handleMouseDown(event) { 
@@ -94,34 +92,41 @@ function handleMouseDown(event) {
 
 function guessDebut( startData = [{ type:'open', list: ['Center Game'] }] ) {
     // random
-    let game = GAMES[startData[0].type].find(g => g.name === "Center Game");
+    let game = GAMES[startData[0].type].find(g => g.name === "Not a Center Game");
     
+    //
     playGame(game.notation)
 }
 
 function playGame(chessCoords) {
-    /*chessCoords.forEach((move) => {
+    let white = ''
+    let black = ''
+    
+    chessCoords.forEach((m) => {
+        move = m.split(' ')
         console.log(move)
-    })*/
-    
-    let move = chessCoords[0].split(' ')
-    white = move[0]
-    if(white.length == 4) {
-        piece = "w"
-        startCoord = white.slice(0, 2)
-        finishCoord = white.slice(2)
+        if(move[0].length == 4) {
+            piece = 'w'
+            currentCoord = move[0].slice(0, 2)
+            moveCoord = move[0].slice(2)
+            
+            f = CURRENT_GAME.indexOf(CURRENT_GAME.find(p => p.piece === piece && p.coords == currentCoord))
+            
+            CURRENT_GAME[f].coords = moveCoord
+            movePiece(PIECES.w.src, moveCoord, currentCoord)
+        }
         
-        f = CURRENT_GAME.indexOf(CURRENT_GAME.find(p => p.piece === "w" && p.coords == startCoord))
-        CURRENT_GAME[12].coords = finishCoord
-        
-        CURRENT_GAME.forEach((p) => {
-            // console.log(PIECES[p.piece])
-//            drawChessSquares() 
-            createPiece(PIECES[p.piece].src, p.coords)
-        })
-    }
-    
-    console.log(CURRENT_GAME)
+        /*if(white.length == 4) {
+            piece = "w"
+            startCoord = white.slice(0, 2)
+            finishCoord = white.slice(2)
+
+            f = CURRENT_GAME.indexOf(CURRENT_GAME.find(p => p.piece === "w" && p.coords == startCoord))
+
+            CURRENT_GAME[12].coords = finishCoord
+            movePiece(PIECES.w.src, 'e4', 'e2')
+        }*/
+    })
 }
 
 function whatPiece(event) {
@@ -134,21 +139,52 @@ function whatPiece(event) {
     } else {
         console.log(false)
     }
+}
+
+function movePiece(src, startCoords, removeCoords) {
+    let piece = new Image()
+    let coord = chessCoordsInCartesian(startCoords)
+    let delCoords = chessCoordsInCartesian(removeCoords)
+    let color = getColorOfSquare(removeCoords)
     
+    piece.src = src
+    ctx.drawImage(piece, coord.x, coord.y)
+    
+    ctx.fillStyle = color;
+    ctx.fillRect(delCoords.x, delCoords.y, SIDE_OF_SQUARE, SIDE_OF_SQUARE);
+    ctx.fill();
+}
+
+function getColorOfSquare(squareCoords) {
+    let letter = LETTER_TO_NUMBER[squareCoords[0]]
+    let digit = parseInt(squareCoords[1])
+    let colot = ''
+    
+    if ((letter % 2 == 0 && digit % 2 == 0) || (letter % 2 != 0 && digit % 2 != 0)) {
+        color = SQUARE_COLOR.dark
+    } else {
+        color = SQUARE_COLOR.light
+    }
+    return color 
 }
 
 function createPiece(src, startCoords) {
     let piece = new Image()
     let coord = chessCoordsInCartesian(startCoords)
+    
     piece.src = src
-    piece.onload = () => { ctx.drawImage(piece, coord.x, coord.y) };
+    /*piece.onload = () => { 
+        ctx.drawImage(piece, coord.x, coord.y)
+    };*/
+    
+    ctx.drawImage(piece, coord.x, coord.y)
 }
 
 function setUpPieces() {
     for(piece in PIECES) {
         for(let cn of PIECES[piece].startCoords) {
             createPiece(PIECES[piece].src, cn);
-            CURRENT_GAME.push( { piece: piece,  coords: cn })
+            CURRENT_GAME.push({ piece: piece,  coords: cn })
         }
     }
 }
