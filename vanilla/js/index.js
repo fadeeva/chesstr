@@ -101,30 +101,33 @@ function guessDebut( startData = [{ type:'open', list: ['Center Game'] }] ) {
 function playGame(chessCoords) {
     let white = ''
     let black = ''
-    
+
     chessCoords.forEach((m) => {
-        move = m.split(' ')
-        console.log(move)
-        if(move[0].length == 4) {
-            piece = 'w'
-            currentCoord = move[0].slice(0, 2)
-            moveCoord = move[0].slice(2)
-            
-            f = CURRENT_GAME.indexOf(CURRENT_GAME.find(p => p.piece === piece && p.coords == currentCoord))
-            
-            CURRENT_GAME[f].coords = moveCoord
-            movePiece(PIECES.w.src, moveCoord, currentCoord)
-        }
+        moves = m.split(' ')
         
-        /*if(white.length == 4) {
-            piece = "w"
-            startCoord = white.slice(0, 2)
-            finishCoord = white.slice(2)
+        for(let i = 1; i < 6; i++) {
+           setTimeout(()=>{
+              console.log(i);
+           }, i * 1000);
+        }
 
-            f = CURRENT_GAME.indexOf(CURRENT_GAME.find(p => p.piece === "w" && p.coords == startCoord))
+        /*for(let move in moves) {
+            setTimeout(() => {
+                console.log(moves[move])
+                
+                if(moves[move].length == 4) {
+                    piece = move == 0 ? 'w' : 'b' 
+                    currentCoord = moves[move].slice(0, 2)
+                    moveCoord = moves[move].slice(2)
 
-            CURRENT_GAME[12].coords = finishCoord
-            movePiece(PIECES.w.src, 'e4', 'e2')
+                    f = CURRENT_GAME.indexOf(CURRENT_GAME.find(p => p.piece === piece && p.coords == currentCoord))
+                    CURRENT_GAME[f].coords = moveCoord
+                    movePiece(PIECES[piece].src, moveCoord, currentCoord)
+
+                }
+            }, 4000);
+            
+                    
         }*/
     })
 }

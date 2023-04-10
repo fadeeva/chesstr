@@ -2,7 +2,7 @@ const GAMES = {
     "open": [
         {
             name: "Not a Center Game",
-            notation: ['e2e4 e7e5', 'd2d4 h7h6', 'Qf3 Nb8c6']
+            notation: ['e2e4 e7e5', 'd2d4 h7h6', 'b2b3 c7c5', 'h2h4 d7d6']
         },
         {
             name: "Center Game",
