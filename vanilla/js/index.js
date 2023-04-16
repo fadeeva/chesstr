@@ -67,6 +67,7 @@ const PIECES = {
 
 const OFFSET = { x: 0, y: 0 };
 const CURRENT_GAME = []
+let moves = []
 /**
  * Стартовая точка игры.
  */
@@ -101,35 +102,44 @@ function guessDebut( startData = [{ type:'open', list: ['Center Game'] }] ) {
 function playGame(chessCoords) {
     let white = ''
     let black = ''
+    
+    i = 1
+    j = 1
 
     chessCoords.forEach((m) => {
-        moves = m.split(' ')
         
-        for(let i = 1; i < 6; i++) {
-           setTimeout(()=>{
-              console.log(i);
-           }, i * 1000);
-        }
-
-        /*for(let move in moves) {
-            setTimeout(() => {
-                console.log(moves[move])
-                
-                if(moves[move].length == 4) {
-                    piece = move == 0 ? 'w' : 'b' 
+//        setTimeout(()=>{
+//            moves = m.split(' ')
+            moves = moves.concat(m.split(' '))
+/*
+            for(let move in moves) {
+                setTimeout(()=>{
+                    if(moves[move].length == 4) {
+                        piece = move == 0 ? 'w' : 'b'
+                    }
                     currentCoord = moves[move].slice(0, 2)
                     moveCoord = moves[move].slice(2)
-
                     f = CURRENT_GAME.indexOf(CURRENT_GAME.find(p => p.piece === piece && p.coords == currentCoord))
                     CURRENT_GAME[f].coords = moveCoord
-                    movePiece(PIECES[piece].src, moveCoord, currentCoord)
+                    movePiece(PIECES[piece].src, moveCoord, currentCoord)         
+                }, j * 500); j++
+            }
 
-                }
-            }, 4000);
-            
-                    
-        }*/
+        }, i * 1000); i++
+*/
     })
+    
+
+    animate_move()
+        
+}
+i = 0
+function animate_move() {
+    
+    console.log(moves[i])
+    if(i == moves.length - 1) return
+    i++
+    setTimeout(animate_move, 1000);
 }
 
 function whatPiece(event) {
@@ -145,6 +155,7 @@ function whatPiece(event) {
 }
 
 function movePiece(src, startCoords, removeCoords) {
+    
     let piece = new Image()
     let coord = chessCoordsInCartesian(startCoords)
     let delCoords = chessCoordsInCartesian(removeCoords)
@@ -153,9 +164,14 @@ function movePiece(src, startCoords, removeCoords) {
     piece.src = src
     ctx.drawImage(piece, coord.x, coord.y)
     
-    ctx.fillStyle = color;
+//    console.log(piece, coord.x, coord.y)
+    
+//    ctx.fillStyle = color;
+    ctx.fillStyle = '#ff00ff';
     ctx.fillRect(delCoords.x, delCoords.y, SIDE_OF_SQUARE, SIDE_OF_SQUARE);
     ctx.fill();
+    
+    return src
 }
 
 function getColorOfSquare(squareCoords) {
