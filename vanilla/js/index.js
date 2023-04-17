@@ -68,6 +68,7 @@ const PIECES = {
 const OFFSET = { x: 0, y: 0 };
 const CURRENT_GAME = []
 let moves = []
+let pieceIMG = new Image()
 /**
  * Стартовая точка игры.
  */
@@ -103,40 +104,24 @@ function playGame(chessCoords) {
     let white = ''
     let black = ''
     
-    i = 1
-    j = 1
-
-    chessCoords.forEach((m) => {
-        
-//        setTimeout(()=>{
-//            moves = m.split(' ')
-            moves = moves.concat(m.split(' '))
-/*
-            for(let move in moves) {
-                setTimeout(()=>{
-                    if(moves[move].length == 4) {
-                        piece = move == 0 ? 'w' : 'b'
-                    }
-                    currentCoord = moves[move].slice(0, 2)
-                    moveCoord = moves[move].slice(2)
-                    f = CURRENT_GAME.indexOf(CURRENT_GAME.find(p => p.piece === piece && p.coords == currentCoord))
-                    CURRENT_GAME[f].coords = moveCoord
-                    movePiece(PIECES[piece].src, moveCoord, currentCoord)         
-                }, j * 500); j++
-            }
-
-        }, i * 1000); i++
-*/
-    })
-    
-
+    i = 0
+    chessCoords.forEach((m) => { moves = moves.concat(m.split(' ')) })
     animate_move()
-        
 }
-i = 0
+
 function animate_move() {
+    piece = i%2 == 0 ? 'w' : 'b'
+    pieceIMG.src = PIECES[piece].src
+    let coord = chessCoordsInCartesian(moves[i].slice(2))
+    let delCoords = chessCoordsInCartesian(moves[i].slice(0, 2))
+    let color = getColorOfSquare(moves[i].slice(0, 2))
     
-    console.log(moves[i])
+    ctx.fillStyle = color;
+    ctx.fillRect(delCoords.x, delCoords.y, SIDE_OF_SQUARE, SIDE_OF_SQUARE);
+    ctx.fill();
+    
+    pieceIMG.onload = function() { ctx.drawImage(pieceIMG, coord.x, coord.y) };
+    
     if(i == moves.length - 1) return
     i++
     setTimeout(animate_move, 1000);
@@ -166,8 +151,7 @@ function movePiece(src, startCoords, removeCoords) {
     
 //    console.log(piece, coord.x, coord.y)
     
-//    ctx.fillStyle = color;
-    ctx.fillStyle = '#ff00ff';
+    ctx.fillStyle = color;
     ctx.fillRect(delCoords.x, delCoords.y, SIDE_OF_SQUARE, SIDE_OF_SQUARE);
     ctx.fill();
     
