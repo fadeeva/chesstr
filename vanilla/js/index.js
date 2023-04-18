@@ -72,6 +72,12 @@ let pieceIMG = new Image()
 /**
  * Стартовая точка игры.
  */
+
+let imgTag = new Image()
+let x = 600
+y = 0;
+
+
 function init() {
     canvas = document.getElementById('squares');
     ctx = canvas.getContext('2d');
@@ -85,6 +91,14 @@ function init() {
     guessDebut()
     
     canvas.addEventListener("mousedown", handleMouseDown);
+    
+    
+    
+    
+    
+    imgTag.onload = animate;
+    imgTag.src = PIECES['w'].src;
+
 }
 
 function handleMouseDown(event) { 
@@ -106,10 +120,20 @@ function playGame(chessCoords) {
     
     i = 0
     chessCoords.forEach((m) => { moves = moves.concat(m.split(' ')) })
-    animate_move()
+    //next_move()
 }
 
-function animate_move() {
+
+
+function animate() {
+    ctx.clearRect(0, 0, 648, 648);  // clear canvas
+    drawChessSquares()
+    ctx.drawImage(imgTag, x, 400);                   // draw image at current position
+    x -= 4;
+    if (x > 250) requestAnimationFrame(animate)        // loop*/
+}
+
+/*function next_move() {
     piece = i%2 == 0 ? 'w' : 'b'
     pieceIMG.src = PIECES[piece].src
     let coord = chessCoordsInCartesian(moves[i].slice(2))
@@ -120,12 +144,19 @@ function animate_move() {
     ctx.fillRect(delCoords.x, delCoords.y, SIDE_OF_SQUARE, SIDE_OF_SQUARE);
     ctx.fill();
     
-    pieceIMG.onload = function() { ctx.drawImage(pieceIMG, coord.x, coord.y) };
+    y = delCoords.y
+    pieceIMG.onload = function() { 
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawChessSquares()
+        ctx.drawImage(pieceIMG, coord.x, y)
+        y += 4;
+        if (y > 250) requestAnimationFrame(self) 
+    };
     
     if(i == moves.length - 1) return
     i++
-    setTimeout(animate_move, 1000);
-}
+    setTimeout(next_move, 2000);
+}*/
 
 function whatPiece(event) {
     let cursorX = parseInt(event.pageX - OFFSET.x)
