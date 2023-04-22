@@ -69,15 +69,17 @@ const OFFSET = { x: 0, y: 0 };
 const CURRENT_GAME = []
 let moves = []
 let pieceIMG = new Image()
+
+let MovingImgTag = new Image()
+let animate_from_to = {
+    start  : chessCoordsInCartesian('c2'),
+    finish : chessCoordsInCartesian('c4'),
+    piece  : PIECES['w'].src
+}
+
 /**
  * Стартовая точка игры.
  */
-
-let imgTag = new Image()
-let x = 600
-y = 0;
-
-
 function init() {
     canvas = document.getElementById('squares');
     ctx = canvas.getContext('2d');
@@ -91,13 +93,6 @@ function init() {
     guessDebut()
     
     canvas.addEventListener("mousedown", handleMouseDown);
-    
-    
-    
-    
-    
-    imgTag.onload = animate;
-    imgTag.src = PIECES['w'].src;
 
 }
 
@@ -120,22 +115,30 @@ function playGame(chessCoords) {
     
     i = 0
     chessCoords.forEach((m) => { moves = moves.concat(m.split(' ')) })
-    //next_move()
+    // next_move()
+    
+    MovingImgTag.src = animate_from_to.piece
+    MovingImgTag.onload = animate
+    
 }
-
-
 
 function animate() {
-    ctx.clearRect(0, 0, 648, 648);  // clear canvas
+    ctx.clearRect(0, 0, 648, 648);
     drawChessSquares()
-    ctx.drawImage(imgTag, x, 400);                   // draw image at current position
-    x -= 4;
-    if (x > 250) requestAnimationFrame(animate)        // loop*/
+
+    ctx.drawImage(MovingImgTag, animate_from_to.start.x, animate_from_to.start.y);
+    
+    animate_from_to.start.y -= 6; // Скорректировать координаты, сейчас не на середине останавливается
+//    animate_from_to.start.x += 6;
+    
+//    if (animate_from_to.start.y > animate_from_to.finish.y || animate_from_to.start.x < animate_from_to.finish.x)
+    if (animate_from_to.start.y >= animate_from_to.finish.y)
+        requestAnimationFrame(animate)
 }
 
-/*function next_move() {
+function next_move() {
     piece = i%2 == 0 ? 'w' : 'b'
-    pieceIMG.src = PIECES[piece].src
+//    pieceIMG.src = PIECES[piece].src
     let coord = chessCoordsInCartesian(moves[i].slice(2))
     let delCoords = chessCoordsInCartesian(moves[i].slice(0, 2))
     let color = getColorOfSquare(moves[i].slice(0, 2))
@@ -144,19 +147,24 @@ function animate() {
     ctx.fillRect(delCoords.x, delCoords.y, SIDE_OF_SQUARE, SIDE_OF_SQUARE);
     ctx.fill();
     
-    y = delCoords.y
-    pieceIMG.onload = function() { 
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        drawChessSquares()
-        ctx.drawImage(pieceIMG, coord.x, y)
-        y += 4;
-        if (y > 250) requestAnimationFrame(self) 
-    };
+    y_a = coord.y
+    x_a = coord.x
+    MovingImgTag.src = PIECES[piece].src
+    MovingImgTag.onload = animate
+    
+//    y = delCoords.y
+//    pieceIMG.onload = function() { 
+//        ctx.clearRect(0, 0, canvas.width, canvas.height);
+//        drawChessSquares()
+//        ctx.drawImage(pieceIMG, coord.x, y)
+//        y += 4;
+//        if (y > 250) requestAnimationFrame(self) 
+//    };
     
     if(i == moves.length - 1) return
     i++
-    setTimeout(next_move, 2000);
-}*/
+    setTimeout(next_move, 3000); // Посчитать время в зависимости от длины шага
+}
 
 function whatPiece(event) {
     let cursorX = parseInt(event.pageX - OFFSET.x)
@@ -170,12 +178,14 @@ function whatPiece(event) {
     }
 }
 
-function movePiece(src, startCoords, removeCoords) {
+/*function movePiece(src, startCoords, removeCoords) {
     
     let piece = new Image()
     let coord = chessCoordsInCartesian(startCoords)
     let delCoords = chessCoordsInCartesian(removeCoords)
     let color = getColorOfSquare(removeCoords)
+    // меняем animate_to_from
+    
     
     piece.src = src
     ctx.drawImage(piece, coord.x, coord.y)
@@ -187,7 +197,7 @@ function movePiece(src, startCoords, removeCoords) {
     ctx.fill();
     
     return src
-}
+}*/
 
 function getColorOfSquare(squareCoords) {
     let letter = LETTER_TO_NUMBER[squareCoords[0]]
