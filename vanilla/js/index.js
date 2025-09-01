@@ -1,7 +1,6 @@
 window.onload = function() { init(); }
 
 //console.log(GAMES)
-
 let canvas = null;
 let ctx = null;
 
@@ -71,11 +70,23 @@ let moves = []
 let pieceIMG = new Image()
 
 let MovingImgTag = new Image()
-let animate_from_to = {
-    start  : chessCoordsInCartesian('c2'),
-    finish : chessCoordsInCartesian('c4'),
-    piece  : PIECES['w'].src
-}
+let animateArr = [ /*['e2e4 e7e5', 'd2d4 h7h6', 'b2b3 c7c5', 'h2h4 d7d6']*/
+    {
+        start  : chessCoordsInCartesian('e2'),
+        finish : chessCoordsInCartesian('e4'),
+        piece  : PIECES['w'].src
+    },
+    {
+        start  : chessCoordsInCartesian('e7'),
+        finish : chessCoordsInCartesian('e5'),
+        piece  : PIECES['b'].src
+    },
+    {
+        start  : chessCoordsInCartesian('d2'),
+        finish : chessCoordsInCartesian('d4'),
+        piece  : PIECES['w'].src
+    },
+]
 
 /**
  * Стартовая точка игры.
@@ -104,7 +115,6 @@ function handleMouseDown(event) {
 function guessDebut( startData = [{ type:'open', list: ['Center Game'] }] ) {
     // random
     let game = GAMES[startData[0].type].find(g => g.name === "Not a Center Game");
-    
     //
     playGame(game.notation)
 }
@@ -117,23 +127,32 @@ function playGame(chessCoords) {
     chessCoords.forEach((m) => { moves = moves.concat(m.split(' ')) })
     // next_move()
     
-    MovingImgTag.src = animate_from_to.piece
+//    animateArr.forEach((p) => {
+//        MovingImgTag = new Image()
+//        MovingImgTag.src = p.piece
+//        MovingImgTag.onload = animate(p, MovingImgTag)
+//    })
+    MovingImgTag.src = animateArr[0].piece
     MovingImgTag.onload = animate
+//    MovingImgTag.src = animate_from_to[0].piece
+//    MovingImgTag.onload = animate
     
 }
 
 function animate() {
-    ctx.clearRect(0, 0, 648, 648);
-    drawChessSquares()
-
-    ctx.drawImage(MovingImgTag, animate_from_to.start.x, animate_from_to.start.y);
+    let piece = animateArr[0]
     
-    animate_from_to.start.y -= 6; // Скорректировать координаты, сейчас не на середине останавливается
-//    animate_from_to.start.x += 6;
+    ctx.clearRect(0, 0, 648, 648);
+    drawChessSquares();
+    
+    console.log(piece.start.x)
+    ctx.drawImage(MovingImgTag, piece.start.x, piece.start.y);
+    
+    piece.start.y -= 6; // Скорректировать координаты, сейчас не на середине останавливается
     
 //    if (animate_from_to.start.y > animate_from_to.finish.y || animate_from_to.start.x < animate_from_to.finish.x)
-    if (animate_from_to.start.y >= animate_from_to.finish.y)
-        requestAnimationFrame(animate)
+    if (piece.start.y >= piece.finish.y)
+        requestAnimationFrame(animate.bind(piece))
 }
 
 function next_move() {
