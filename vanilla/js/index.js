@@ -127,21 +127,13 @@ function playGame(chessCoords) {
     chessCoords.forEach((m) => { moves = moves.concat(m.split(' ')) })
     // next_move()
     
-//    animateArr.forEach((p) => {
-//        MovingImgTag = new Image()
-//        MovingImgTag.src = p.piece
-//        MovingImgTag.onload = animate(p, MovingImgTag)
-//    })
     MovingImgTag.src = animateArr[0].piece
     MovingImgTag.onload = animate
-//    MovingImgTag.src = animate_from_to[0].piece
-//    MovingImgTag.onload = animate
-    
 }
 
 function animate() {
     let piece = animateArr[0]
-    
+        
     ctx.clearRect(0, 0, 648, 648);
     drawChessSquares();
     
@@ -150,9 +142,8 @@ function animate() {
     
     piece.start.y -= 6; // Скорректировать координаты, сейчас не на середине останавливается
     
-//    if (animate_from_to.start.y > animate_from_to.finish.y || animate_from_to.start.x < animate_from_to.finish.x)
     if (piece.start.y >= piece.finish.y)
-        requestAnimationFrame(animate.bind(piece))
+        requestAnimationFrame(animate)
 }
 
 function next_move() {
